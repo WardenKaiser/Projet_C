@@ -29,4 +29,82 @@ void bee_life_cycle()
 	
 }
 
-void 
+void adding_bees_from_outside_the_hive()
+{
+
+}
+
+void queen_feeding()
+{
+
+}
+
+void reproduction()
+{
+
+}
+
+void feed_recovery()
+{
+
+}
+
+void season_management()
+{
+
+}
+
+void food_storage()
+{
+
+}
+
+void predator()
+{
+
+}
+
+void outdoor_hazard()
+{
+
+}
+
+void shortest_path() // Algo de Dijkra
+{
+
+}
+
+void bee_to_queen_transformation()
+{
+
+}
+
+void hive_capacity()
+{
+
+}
+
+void temperature_management()
+{
+
+}
+
+void action_between_recipient_bultine_bees()
+{
+
+}
+
+void timer_counter()
+{
+
+}
+
+void random_parameter()
+{
+
+}
+
+void field_with_flowers()
+{
+	
+}

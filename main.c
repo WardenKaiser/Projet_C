@@ -7,7 +7,7 @@
 int main(int argc, char const *argv[])
 {
 	
-	
+	printf("print\n");
 	
 	return 0;
 }

@@ -26,7 +26,7 @@ typedef struct hive
 
 void bee_life_cycle()
 {
-
+	// Bee kill himself
 }
 
 void 

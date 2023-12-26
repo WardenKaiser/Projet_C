@@ -16,7 +16,7 @@ typedef struct role
 
 typedef struct bee
 {
-	int bee_dead;
+	
 }bee;
 
 typedef struct hive
@@ -26,7 +26,7 @@ typedef struct hive
 
 void bee_life_cycle()
 {
-	// Bee kill himself
+	
 }
 
 void 

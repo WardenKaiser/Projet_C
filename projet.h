@@ -4,5 +4,3 @@
 #include <math.h>
 #include <stdbool.h>
 
-// Fonction mes couilles
-// Fct

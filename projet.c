@@ -16,7 +16,7 @@ typedef struct role
 
 typedef struct bee
 {
-	
+	int bee_dead;
 }bee;
 
 typedef struct hive

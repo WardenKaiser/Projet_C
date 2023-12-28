@@ -8,7 +8,7 @@ typedef struct role
 {
 	int queen;
 	int forager;
-	int recipient;
+	int receiver;
 	int drone;
 	int nanny;
 	int guard;

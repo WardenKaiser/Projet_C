@@ -24,9 +24,12 @@ typedef struct hive
 	
 }hive;
 
-void bee_life_cycle()
+void bee_life_cycle(int days_of_death)
 {
-	
+	if (days_of_death >= 1 && days_of_death <= 3)
+	{
+		
+	}
 }
 
 void adding_bees_from_outside_the_hive()

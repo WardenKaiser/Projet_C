@@ -18,7 +18,7 @@ typedef struct bee
 {
 	int age;
 	int role;
-	int capacite_pollen;
+	int pollen_capacity;
 }bee;
 
 typedef struct hive
@@ -67,6 +67,10 @@ void bee_life_cycle(struct hive* hive ,int days_of_death)
 	{
 		hive->total_foragers = NULL;
 	}
+}
+
+void reproduction()
+{
 
 }
 
@@ -76,11 +80,6 @@ void adding_bees_from_outside_the_hive()
 }
 
 void queen_feeding()
-{
-
-}
-
-void reproduction()
 {
 
 }
@@ -152,5 +151,5 @@ void field_with_flowers()
 
 void bear_attack()
 {
-	
+
 }

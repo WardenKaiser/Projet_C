@@ -21,14 +21,19 @@ typedef struct bee
 
 typedef struct hive
 {
-	
+	int total_larva;
 }hive;
 
-void bee_life_cycle(int days_of_death)
+void bee_life_cycle(struct hive* hive ,int days_of_death)
 {
 	if (days_of_death >= 1 && days_of_death <= 3)
 	{
-		
+		hive->total_larva =+2000;
+	}
+
+	if (days_of_death >= 3 && days_of_death <= 9)
+	{
+		/* code */
 	}
 }
 

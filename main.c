@@ -27,19 +27,27 @@ clock_t start_time, end_time;
     double elapsed_time = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
     printf("Le temps écoulé est de %.2f secondes.\n", elapsed_time);
 	*/
- int compteur = 0;
+   int jour = 0;
     char touche;
+    initscr();
+    while (1) 
+	{
+        touche = getch();
 
-    while (1) {
-        touche = getch(); 
-
-        if (touche == 'q') {
-            printf("Sortie du programme.\n");
-            break; 
+        if (touche == 'q') 
+		{
+            printw("Sortie du programme.\n");
+            break;
+        } else if (touche != ERR) 
+		{
+            jour++;
+            clear();
+            printw("jour : %d\n", jour);
+            refresh();
         }
-
-        compteur++;
-        printf("Compteur : %d\n", compteur);
     }
-	return 0;
+
+    endwin();
+return 0;
+
 }

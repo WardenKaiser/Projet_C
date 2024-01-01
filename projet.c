@@ -87,7 +87,7 @@ void warming_up_the_hive(hive *hive, int temperature, int current_day)
         {
             hive->foragers[i].pollen_capacity -= 5;
         }
-        printf("La capacité de vol s'affaiblit.\n");
+        printf("Foragers nerf\n");
     } 
 
     else if (temperature < 10 && temperature >= 7 && hive->total_foragers > 0) 
@@ -96,12 +96,12 @@ void warming_up_the_hive(hive *hive, int temperature, int current_day)
         {
             hive->foragers[i].pollen_capacity -= 10; 
         }
-        printf("La capacité de vol s'affaiblit.\n");
+        printf("Foragers nerf\n");
     } 
 
     else if (temperature < 7 && hive->total_bees > 0) 
     {
-        printf("Le corps de l'abeille se paralyse, l'abeille meurt.\n");
+        printf("Death !\n");
 
         hive->total_larva = 0;
         hive->total_nannies = 0;
@@ -110,10 +110,10 @@ void warming_up_the_hive(hive *hive, int temperature, int current_day)
         hive->total_guards = 0;
         hive->total_foragers = 0;
     } 
-    
+
     else 
     {
-        printf("La ruche est dans des conditions normales.\n");
+        printf("All good\n");
     }
 }
 

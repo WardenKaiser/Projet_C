@@ -6,41 +6,41 @@
 
 typedef struct role
 {
-	int queen;
-	int forager;
-	int receiver;
-	int drone;
-	int nanny;
-	int guard;
-	int bumblebee;
-	int larva;
-}role;
+    int queen;
+    int forager;
+    int receiver;
+    int drone;
+    int nanny;
+    int guard;
+    int bumblebee;
+    int larva;
+} role;
 
 typedef struct bee
 {
-	int age;
-	int identifiant;
-	role Role;
-	int pollen_capacity;
-	char sex;
-}bee;
+    int age;
+    int identifiant;
+    int pollen_capacity;
+    char sex;
+    role Role;
+} bee;
 
 typedef struct hive
 {
-	int total_larva;
-	int total_nannies;
-	int total_receivers;
-	int total_builders;
-	int total_guards;
-	int total_foragers;
-}hive;
+    int total_larva;
+    int total_nannies;
+    int total_receivers;
+    int total_builders;
+    int total_guards;
+    int total_foragers;
+} hive;
 
-void bee_life_cycle(struct hive* hive ,int current_day)
+void bee_life_cycle(struct hive *hive, int current_day)
 {
-	if (current_day >= 1 && current_day <= 3)
-	{
-		hive->total_larva =+ 2000;
-	}
+    if (current_day >= 1 && current_day <= 3)
+    {
+        hive->total_larva += 2000;
+    }
 
     if (current_day >= 4 && current_day <= 9)
     {

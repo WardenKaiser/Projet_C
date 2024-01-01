@@ -117,7 +117,7 @@ void warming_up_the_hive(hive *hive, int temperature, int current_day)
     }
 }
 
-void reproduction()// Guy Yome 
+void reproduction()
 {
 
 }

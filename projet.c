@@ -122,9 +122,24 @@ void reproduction()// Guy Yome
 
 }
 
-void adding_bees_from_outside_the_hive()
+void adding_bees_from_outside_the_hive(hive *hive)
 {
+    srand(time(NULL));
+    int chance = rand() % 100;
+    int chanceToAddBees = 30; 
 
+    if (chance < chanceToAddBees)
+    {      
+        int new_bees_from_outside;
+        new_bees_from_outside = rand() % 30 + 1;
+
+        printf("Lucky you ! U found %d new bees !\n", new_bees_from_outside);
+        hive->total_foragers += new_bees_from_outside;
+    }
+    else
+    {
+        printf("Nothing u found nothing...\n");
+    }
 }
 
 void queen_feeding()

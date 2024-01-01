@@ -79,7 +79,7 @@ void bee_life_cycle(struct hive *hive, int current_day)
     }
 }
 
-void warming_up_the_hive(hive *hive, int temperature, int current_day)
+void warming_up_the_hive(struct hive *hive, int temperature, int current_day)
 {
     if (temperature >= 10 && hive->total_foragers > 0) 
     {
@@ -122,7 +122,7 @@ void reproduction()
 
 }
 
-void adding_bees_from_outside_the_hive(hive *hive)
+void adding_bees_from_outside_the_hive(struct hive *hive)
 {
     srand(time(NULL));
     int chance = rand() % 100;

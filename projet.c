@@ -13,13 +13,16 @@ typedef struct role
 	int nanny;
 	int guard;
 	int bumblebee;
+	int larva;
 }role;
 
 typedef struct bee
 {
 	int age;
-	int role;
+	int identifiant;
+	role Role;
 	int pollen_capacity;
+	char sex;
 }bee;
 
 typedef struct hive
@@ -32,47 +35,42 @@ typedef struct hive
 	int total_foragers;
 }hive;
 
-void bee_life_cycle(struct hive *hive, int current_day)
+void bee_life_cycle(struct hive* hive ,int days_of_death)
 {
-    if (current_day >= 1 && current_day <= 3)
-    {
-        hive->total_larva += 2000;
-    }
+	if (days_of_death >= 1 && days_of_death <= 3)
+	{
+		hive->total_larva =+ 2000;
+	}
 
-    if (current_day >= 3 && current_day <= 9)
-    {
-        hive->total_nannies = hive->total_larva;
-        hive->total_larva -= hive->total_nannies;
-    }
+	if (days_of_death >= 3 && days_of_death <= 9)
+	{
+		hive->total_nannies = hive->total_larva;
+	}
 
-    if (current_day >= 9 && current_day <= 12)
-    {
-        hive->total_receivers = hive->total_nannies;
-        hive->total_nannies = 0;
-    }
+	if (days_of_death >= 9 && days_of_death <= 12)
+	{
+		hive->total_nannies = hive->total_receivers;
+	}
 
-    if (current_day >= 12 && current_day <= 18)
-    {
-        hive->total_builders = hive->total_receivers;
-        hive->total_receivers = 0;
-    }
+	if (days_of_death >= 12 && days_of_death <= 18)
+	{
+		hive->total_receivers = hive->total_builders;
+	}
 
-    if (current_day >= 15 && current_day <= 22)
-    {
-        hive->total_guards = hive->total_builders;
-        hive->total_builders = 0;
-    }
+	if (days_of_death >= 15 && days_of_death <= 22)
+	{
+		hive->total_builders = hive->total_guards;
+	}
 
-    if (current_day >= 22 && current_day <= 45)
-    {
-        hive->total_foragers = hive->total_guards;
-        hive->total_guards = 0;
-    }
+	if (days_of_death >= 22 && days_of_death <= 45)
+	{
+		hive->total_guards = hive->total_foragers;
+	}
 
-    if (current_day > 45)
-    {
-        hive->total_foragers = 0;
-    }
+	if (days_of_death > 45)
+	{
+		hive->total_foragers = NULL;
+	}
 }
 
 void warming_up_the_hive()
@@ -80,6 +78,14 @@ void warming_up_the_hive()
 	
 }
 
+bee create_bee(int identifiant)
+{
+	bee Bee;
+	Bee.identifiant=identifiant;
+	Bee.sex=rand();
+	Bee.Role.larva;
+	return Bee;
+}
 void reproduction()
 {
 

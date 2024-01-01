@@ -27,6 +27,9 @@ clock_t start_time, end_time;
     double elapsed_time = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
     printf("Le temps écoulé est de %.2f secondes.\n", elapsed_time);
 	*/
+
+ srand( time( NULL ) );
+ 
    int jour = 0;
     char touche;
     initscr();

@@ -7,24 +7,24 @@
 
 typedef struct role
 {
-	int queen;
-	int forager;
-	int receiver;
-	int drone;
-	int nanny;
-	int guard;
-	int bumblebee;
-	int larva;
-}role;
+    int queen;
+    int forager;
+    int receiver;
+    int drone;
+    int nanny;
+    int guard;
+    int bumblebee;
+    int larva;
+} role;
 
 typedef struct bee
 {
-	int age;
-	int identifiant;
-	role Role;
-	int pollen_capacity;
-	char sex;
-}bee;
+    int age;
+    int identifiant;
+    int pollen_capacity;
+    char sex;
+    role Role;
+} bee;
 
 typedef struct hive
 {
@@ -51,10 +51,10 @@ typedef struct Node
 
 void bee_life_cycle(struct hive* hive ,int current_day)
 {
-	if (current_day >= 1 && current_day <= 3)
-	{
-		hive->total_larva =+ 2000;
-	}
+    if (current_day >= 1 && current_day <= 3)
+    {
+        hive->total_larva += 2000;
+    }
 
     if (current_day >= 4 && current_day <= 9)
     {
@@ -98,20 +98,20 @@ void bee_life_cycle(struct hive* hive ,int current_day)
 
 void warming_up_the_hive(struct hive *hive, int temperature, int current_day)
 {
-    if (temperature >= 10 && hive->total_foragers > 0) 
+    if (temperature >= 10 && hive->total_receivers > 0) 
     {
-        for (int i = 0; i < hive->total_foragers; ++i)
+        for (int i = 0; i < hive->total_receivers; ++i)
         {
-            hive->foragers[i].pollen_capacity -= 5;
+            hive->total_receivers[i].pollen_capacity -= 5;
         }
         printf("Foragers nerf\n");
     } 
 
-    else if (temperature < 10 && temperature >= 7 && hive->total_foragers > 0) 
+    else if (temperature < 10 && temperature >= 7 && hive->total_receivers > 0) 
     {
-        for (int i = 0; i < hive->total_foragers; ++i)
+        for (int i = 0; i < hive->total_receivers; ++i)
         {
-            hive->foragers[i].pollen_capacity -= 10; 
+            hive->total_receivers[i].pollen_capacity -= 10; 
         }
         printf("Foragers nerf\n");
     } 

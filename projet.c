@@ -221,17 +221,17 @@ void shortest_path() // Algo de Dijkra
 
 }
 
+void field_with_flowers()
+{
+	
+}
+
 void bee_to_queen_transformation()
 {
 
 }
 
 void hive_capacity()
-{
-
-}
-
-void temperature_management()
 {
 
 }
@@ -251,10 +251,6 @@ void random_parameter()
 
 }
 
-void field_with_flowers()
-{
-	
-}
 
 void bear_attack()
 {

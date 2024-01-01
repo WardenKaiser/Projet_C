@@ -12,6 +12,7 @@ typedef struct role
 	int drone;
 	int nanny;
 	int guard;
+	int bumblebee;
 }role;
 
 typedef struct bee
@@ -67,6 +68,11 @@ void bee_life_cycle(struct hive* hive ,int days_of_death)
 	{
 		hive->total_foragers = NULL;
 	}
+}
+
+void warming_up_the_hive()
+{
+	
 }
 
 void reproduction()

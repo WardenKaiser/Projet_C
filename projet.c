@@ -84,20 +84,20 @@ void bee_life_cycle(struct hive* hive ,int current_day)
 
 void warming_up_the_hive(struct hive *hive, int temperature, int current_day)
 {
-    if (temperature >= 10 && hive->total_foragers > 0) 
+    if (temperature >= 10 && hive->total_receivers > 0) 
     {
-        for (int i = 0; i < hive->total_foragers; ++i)
+        for (int i = 0; i < hive->total_receivers; ++i)
         {
-            hive->total_foragers[i].pollen_capacity -= 5;
+            hive->total_receivers[i].pollen_capacity -= 5;
         }
         printf("Foragers nerf\n");
     } 
 
-    else if (temperature < 10 && temperature >= 7 && hive->total_foragers > 0) 
+    else if (temperature < 10 && temperature >= 7 && hive->total_receivers > 0) 
     {
-        for (int i = 0; i < hive->total_foragers; ++i)
+        for (int i = 0; i < hive->total_receivers; ++i)
         {
-            hive->total_foragers[i].pollen_capacity -= 10; 
+            hive->total_receivers[i].pollen_capacity -= 10; 
         }
         printf("Foragers nerf\n");
     } 

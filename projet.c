@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdbool.h>
+#include "projet.h"
 
 typedef struct role
 {
@@ -27,13 +28,26 @@ typedef struct bee
 
 typedef struct hive
 {
+	bee* Bee;
+	int food_cap;
+	int food_lvl;
 	int total_larva;
 	int total_nannies;
 	int total_receivers;
 	int total_builders;
 	int total_guards;
 	int total_foragers;
+	int total_bees;
+	Node* root;
 }hive;
+
+typedef struct Node 
+{
+    struct Node* left;
+    struct Node* right;
+    bee beech;
+} Node;
+
 
 void bee_life_cycle(struct hive* hive ,int current_day)
 {
@@ -88,7 +102,7 @@ void warming_up_the_hive(struct hive *hive, int temperature, int current_day)
     {
         for (int i = 0; i < hive->total_foragers; ++i)
         {
-            hive->total_foragers[i].pollen_capacity -= 5;
+            hive->foragers[i].pollen_capacity -= 5;
         }
         printf("Foragers nerf\n");
     } 
@@ -97,7 +111,7 @@ void warming_up_the_hive(struct hive *hive, int temperature, int current_day)
     {
         for (int i = 0; i < hive->total_foragers; ++i)
         {
-            hive->total_foragers[i].pollen_capacity -= 10; 
+            hive->foragers[i].pollen_capacity -= 10; 
         }
         printf("Foragers nerf\n");
     } 
@@ -119,14 +133,33 @@ void warming_up_the_hive(struct hive *hive, int temperature, int current_day)
         printf("All good\n");
     }
 }
-
+Node* creerNode(bee bee) {
+    Node* node = (Node*)malloc(sizeof(Node));
+    if (node != NULL) {
+        node->left = NULL;
+        node->right = NULL;
+        node->beech = bee;
+    }
+    return node;
+}
 bee create_bee(int identifiant)
 {
 	bee Bee;
 	Bee.identifiant=identifiant;
-	Bee.sex=rand();
+	Bee.sex=rand()% 2==0?'M':'F';
+	Bee.age=0;
 	Bee.Role.larva;
 	return Bee;
+}
+hive create_hive(int food_capmax)
+{
+	hive Hive;
+	Hive.food_cap=food_capmax;
+	Hive.food_lvl=0;
+	Hive.Bee=NULL;
+	Hive.total_bees=0;
+	return Hive;
+	
 }
 void reproduction()
 {

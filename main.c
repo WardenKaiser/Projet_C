@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include<time.h>
 #include<ncurses.h>
+#include "projet.h"
 
 int main(int argc, char const *argv[])
 {
@@ -29,7 +30,12 @@ clock_t start_time, end_time;
 	*/
 
  srand( time( NULL ) );
- 
+ int numberofBee = rand() % 10 + 1;
+ for (int i = 0; i < numberofBee; i++) 
+ {
+        Bee bee = creerAbeille(i + 1);
+    }
+ hive Hive = create_hive(60000);
    int jour = 0;
     char touche;
     initscr();

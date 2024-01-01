@@ -39,31 +39,31 @@ void bee_life_cycle(struct hive *hive, int current_day)
         hive->total_larva += 2000;
     }
 
-    if (current_day >= 3 && current_day <= 9)
+    if (current_day >= 4 && current_day <= 9)
     {
         hive->total_nannies = hive->total_larva;
         hive->total_larva -= hive->total_nannies;
     }
 
-    if (current_day >= 9 && current_day <= 12)
+    if (current_day >= 10 && current_day <= 12)
     {
         hive->total_receivers = hive->total_nannies;
         hive->total_nannies = 0;
     }
 
-    if (current_day >= 12 && current_day <= 18)
+    if (current_day >= 13 && current_day <= 18)
     {
         hive->total_builders = hive->total_receivers;
         hive->total_receivers = 0;
     }
 
-    if (current_day >= 15 && current_day <= 22)
+    if (current_day >= 19 && current_day <= 22)
     {
         hive->total_guards = hive->total_builders;
         hive->total_builders = 0;
     }
 
-    if (current_day >= 22 && current_day <= 45)
+    if (current_day >= 23 && current_day <= 45)
     {
         hive->total_foragers = hive->total_guards;
         hive->total_guards = 0;
@@ -72,15 +72,52 @@ void bee_life_cycle(struct hive *hive, int current_day)
     if (current_day > 45)
     {
         hive->total_foragers = 0;
+        hive->total_guards = 0;
+        hive->total_builders = 0;
+        hive->total_receivers = 0;
+        hive->total_nannies = 0;
     }
 }
 
-void warming_up_the_hive()
+void warming_up_the_hive(hive *hive, int temperature, int current_day)
 {
-	
+    if (temperature >= 10 && hive->total_foragers > 0) 
+    {
+        for (int i = 0; i < hive->total_foragers; ++i)
+        {
+            hive->foragers[i].pollen_capacity -= 5;
+        }
+        printf("La capacité de vol s'affaiblit.\n");
+    } 
+
+    else if (temperature < 10 && temperature >= 7 && hive->total_foragers > 0) 
+    {
+        for (int i = 0; i < hive->total_foragers; ++i)
+        {
+            hive->foragers[i].pollen_capacity -= 10; 
+        }
+        printf("La capacité de vol s'affaiblit.\n");
+    } 
+
+    else if (temperature < 7 && hive->total_bees > 0) 
+    {
+        printf("Le corps de l'abeille se paralyse, l'abeille meurt.\n");
+
+        hive->total_larva = 0;
+        hive->total_nannies = 0;
+        hive->total_receivers = 0;
+        hive->total_builders = 0;
+        hive->total_guards = 0;
+        hive->total_foragers = 0;
+    } 
+    
+    else 
+    {
+        printf("La ruche est dans des conditions normales.\n");
+    }
 }
 
-void reproduction()
+void reproduction()// Guy Yome 
 {
 
 }

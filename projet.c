@@ -88,7 +88,7 @@ void warming_up_the_hive(struct hive *hive, int temperature, int current_day)
     {
         for (int i = 0; i < hive->total_foragers; ++i)
         {
-            hive->foragers[i].pollen_capacity -= 5;
+            hive->total_foragers[i].pollen_capacity -= 5;
         }
         printf("Foragers nerf\n");
     } 
@@ -97,7 +97,7 @@ void warming_up_the_hive(struct hive *hive, int temperature, int current_day)
     {
         for (int i = 0; i < hive->total_foragers; ++i)
         {
-            hive->foragers[i].pollen_capacity -= 10; 
+            hive->total_foragers[i].pollen_capacity -= 10; 
         }
         printf("Foragers nerf\n");
     } 

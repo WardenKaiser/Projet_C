@@ -340,7 +340,6 @@ void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, i
 	{
 		int distance = abs(bee->x - current_flower->x) + abs(bee->y - current_flower->y);
 
-<<<<<<< HEAD
         if (distance <= 3) 
         {
             printf("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n",
@@ -349,14 +348,12 @@ void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, i
             bee->pollen_collected += current_flower->pollen_capacity;
             current_flower->pollen_capacity = 0;
         }
-=======
 		if (distance <= 3) 
 		{
 			printf("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n", bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y);
 			bee->pollen_collected += current_flower->pollen_capacity;
 			current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
 		}
->>>>>>> parent of 4acf892 (d)
         current_flower = current_flower->next;
 	}
 

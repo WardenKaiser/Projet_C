@@ -54,34 +54,35 @@ void bee_life_cycle(struct hive* hive ,int current_day)
 
 void warming_up_the_hive(struct hive *hive, int temperature, int current_day) 
 {
-    if (temperature >= 10 && hive->total_foragers > 0) 
-    {
-        hive->total_foragers = hive->total_foragers * 5 / 6;
-        printf("Foragers nerf\n");
-    } 
+	if (temperature >= 10 && hive->total_foragers > 0) 
+	{
+		hive->total_foragers = hive->total_foragers * 5 / 6;
+		printf("Foragers nerf\n");
+	} 
 
-    else if (temperature < 10 && temperature >= 7 && hive->total_foragers > 0) 
-    {
-        hive->total_foragers = hive->total_foragers * 4 / 5;
-        printf("Foragers nerf\n");
-    } 
+	else if (temperature < 10 && temperature >= 7 && hive->total_foragers > 0) 
+	{
+		hive->total_foragers = hive->total_foragers * 4 / 5;
+		printf("Foragers nerf\n");
+	} 
 
-    else if (temperature < 7 && (hive->total_larva + hive->total_nannies + hive->total_receivers + hive->total_builders + hive->total_guards + hive->total_foragers) > 0) 
-    {  
-        printf("Death !\n");
-        hive->total_larva = 0;
-        hive->total_nannies = 0;
-        hive->total_receivers = 0;
-        hive->total_builders = 0;
-        hive->total_guards = 0;
-        hive->total_foragers = 0;
-    } 
+	else if (temperature < 7 && (hive->total_larva + hive->total_nannies + hive->total_receivers + hive->total_builders + hive->total_guards + hive->total_foragers) > 0) 
+	{  
+		printf("Death !\n");
+		hive->total_larva = 0;
+		hive->total_nannies = 0;
+		hive->total_receivers = 0;
+		hive->total_builders = 0;
+		hive->total_guards = 0;
+		hive->total_foragers = 0;
+	} 
 
     else 
     {
         printf("All good\n");
     }
 }
+
 Node* creerNode(bee bee) 
 {
     Node* node = (Node*)malloc(sizeof(Node));
@@ -93,6 +94,7 @@ Node* creerNode(bee bee)
     }
     return node;
 }
+
 bee create_bee(int identifiant)
 {
 	bee Bee;
@@ -103,6 +105,7 @@ bee create_bee(int identifiant)
     
 	return Bee;
 }
+
 hive create_hive(int food_capmax)
 {
 	struct hive Hive;
@@ -112,6 +115,7 @@ hive create_hive(int food_capmax)
 	Hive.total_bees=0;
 	return Hive;
 }
+
 int reproduce(hive *hive, int *males, int *females)
 {
 	int total_children = 0;
@@ -133,6 +137,7 @@ int reproduce(hive *hive, int *males, int *females)
 	}
 	return total_children;
 }
+
 void adding_bees_from_outside_the_hive(struct hive *hive)
 {
 	srand(time(NULL));

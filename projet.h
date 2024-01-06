@@ -8,34 +8,34 @@
 
 typedef struct role
 {
-    int queen;
-    int forager;
-    int receiver;
-    int drone;
-    int nanny;
-    int guard;
-    int bumblebee;
-    int larva;
+	int queen;
+	int forager;
+	int receiver;
+	int drone;
+	int nanny;
+	int guard;
+	int bumblebee;
+	int larva;
 } role;
 
 typedef struct bee
 {
 	int x;
-    int y;
-    int pollen_collected;
-    int age;
-    int identifiant;
-    int pollen_capacity;
-    char sex;
-    role Role;
+	int y;
+	int pollen_collected;
+	int age;
+	int identifiant;
+	int pollen_capacity;
+	char sex;
+	role Role;
 } bee;
 
 typedef struct FlowerNode 
 {
-    int x;
-    int y;
-    int pollen_capacity;
-    struct FlowerNode* next;
+	int x;
+	int y;
+	int pollen_capacity;
+	struct FlowerNode* next;
 }FlowerNode;
 
 typedef struct hive
@@ -55,12 +55,11 @@ typedef struct hive
 
 typedef struct Node 
 {
-    struct Node* left;
-    struct Node* right;
-    bee beech;
-    char data[20];
-    bool on_off;
-
+	struct Node* left;
+	struct Node* right;
+	bee beech;
+	char data[20];
+	bool on_off;
 } Node;
 
 void bee_life_cycle(struct hive* hive ,int current_day);

@@ -3,7 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdbool.h>
-#include<time.h>
+#include <time.h>
 #include<ncurses.h>
 #include "projet.h"
 
@@ -71,6 +71,11 @@ hive Hive;
     }
 
     endwin();
+
+    // Champs
+    create_field();
+    display_field();
+    free_field();
 return 0;
 
 }

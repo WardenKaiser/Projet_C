@@ -26,6 +26,15 @@ typedef struct bee
     role Role;
 } bee;
 
+// Structure pour une fleur
+typedef struct FlowerNode 
+{
+    int x;
+    int y;
+    int pollen_capacity;
+    struct FlowerNode* next;
+}FlowerNode;
+
 typedef struct hive
 {
 	bee* Bee;
@@ -38,7 +47,7 @@ typedef struct hive
 	int total_guards;
 	int total_foragers;
 	int total_bees;
-	Node* root;
+	struct Node* root;
 }hive;
 
 typedef struct Node 
@@ -96,30 +105,23 @@ void bee_life_cycle(struct hive* hive ,int current_day)
     }
 }
 
-void warming_up_the_hive(struct hive *hive, int temperature, int current_day)
+void warming_up_the_hive(struct hive *hive, int temperature, int current_day) 
 {
-    if (temperature >= 10 && hive->total_receivers > 0) 
+    if (temperature >= 10 && hive->total_foragers > 0) 
     {
-        for (int i = 0; i < hive->total_receivers; ++i)
-        {
-            hive->total_receivers[i].pollen_capacity -= 5;
-        }
+        hive->total_foragers = hive->total_foragers * 5 / 6;
         printf("Foragers nerf\n");
     } 
 
-    else if (temperature < 10 && temperature >= 7 && hive->total_receivers > 0) 
+    else if (temperature < 10 && temperature >= 7 && hive->total_foragers > 0) 
     {
-        for (int i = 0; i < hive->total_receivers; ++i)
-        {
-            hive->total_receivers[i].pollen_capacity -= 10; 
-        }
+        hive->total_foragers = hive->total_foragers * 4 / 5;
         printf("Foragers nerf\n");
     } 
 
-    else if (temperature < 7 && hive->total_bees > 0) 
-    {
+    else if (temperature < 7 && (hive->total_larva + hive->total_nannies + hive->total_receivers + hive->total_builders + hive->total_guards + hive->total_foragers) > 0) 
+    {  
         printf("Death !\n");
-
         hive->total_larva = 0;
         hive->total_nannies = 0;
         hive->total_receivers = 0;
@@ -162,7 +164,6 @@ hive create_hive(int food_capmax)
 	Hive.Bee=NULL;
 	Hive.total_bees=0;
 	return Hive;
-	
 }
 int reproduce(hive *hive, int *males, int *females)
 {
@@ -240,9 +241,53 @@ void shortest_path() // Algo de Dijkra
 
 }
 
-void field_with_flowers()
+void add_flower(int x, int y, int pollen_capacity) 
 {
-	
+	FlowerNode* field = NULL;
+    FlowerNode* new_flower = (FlowerNode*)malloc(sizeof(FlowerNode));
+    new_flower->x = x;
+    new_flower->y = y;
+    new_flower->pollen_capacity = pollen_capacity;
+    new_flower->next = field;
+    field = new_flower;
+}
+
+void display_field(struct FlowerNode* field) 
+{
+    struct FlowerNode* element = field;
+
+    while (element != NULL) 
+    {
+        printf("Flower's capacity is %d. At (%d, %d)\n", element->pollen_capacity, element->x, element->y);
+        element = element->next;
+    }
+}
+
+void free_field(struct FlowerNode* field) 
+{
+    struct FlowerNode* element = field;
+    struct FlowerNode* next;
+
+    while (element != NULL) 
+    {
+        next = element->next;
+        free(element);
+        element = next;
+    }
+
+    field = NULL;
+}
+
+void create_field(struct FlowerNode* field) 
+{
+    int n = rand() % 15 + 1;  
+    for (int i = 0; i < n; ++i) 
+    {
+        int x = rand() % 10; 
+        int y = rand() % 10;  
+        int pollen_capacity = rand() % 10 + 1; 
+        add_flower(x, y, pollen_capacity);
+    }
 }
 
 void bee_to_queen_transformation()

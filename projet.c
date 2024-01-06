@@ -133,6 +133,7 @@ void warming_up_the_hive(struct hive *hive, int temperature, int current_day)
         printf("All good\n");
     }
 }
+
 Node* creerNode(bee bee) {
     Node* node = (Node*)malloc(sizeof(Node));
     if (node != NULL) {
@@ -142,6 +143,7 @@ Node* creerNode(bee bee) {
     }
     return node;
 }
+
 bee create_bee(int identifiant)
 {
 	bee Bee;
@@ -151,6 +153,7 @@ bee create_bee(int identifiant)
 	Bee.Role.larva;
 	return Bee;
 }
+
 hive create_hive(int food_capmax)
 {
 	hive Hive;
@@ -161,6 +164,7 @@ hive create_hive(int food_capmax)
 	return Hive;
 	
 }
+
 void reproduction()
 {
 

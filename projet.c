@@ -146,12 +146,12 @@ void adding_bees_from_outside_the_hive(struct hive *hive)
 
 		printf("Lucky you ! U found %d new bees !\n", new_bees_from_outside);
 		hive->total_foragers += new_bees_from_outside;
-    }
-    
-    else
-    {
-        printf("Nothing u found nothing...\n");
-    }
+	}
+
+	else
+	{
+		printf("Nothing u found nothing...\n");
+	}
 }
 
 void queen_feeding()
@@ -188,77 +188,79 @@ void removeSeason(Node* root, const char* season)
 		root->left = NULL;
 	} 
 
-    else if (root->right != NULL && strcmp(root->right->data, season) == 0) 
-    {
-        free(root->right);
-        root->right = NULL;
-    }
+	else if (root->right != NULL && strcmp(root->right->data, season) == 0) 
+	{
+		free(root->right);
+		root->right = NULL;
+	}
 
-    removeSeason(root->left, season);
-    removeSeason(root->right, season);
+	removeSeason(root->left, season);
+	removeSeason(root->right, season);
 }
 
 Node* generateWorld() 
 {
-    srand(time(NULL));
+	srand(time(NULL));
 
-    Node* root = createNode("Monde");
+	Node* root = createNode("Monde");
 
-    if (rand() % 2 == 0) 
-    {
-        root->left = createNode("Froid");
-        root->right = createNode("Chaud");
-    } 
+	if (rand() % 2 == 0) 
+	{
+		root->left = createNode("Froid");
+		root->right = createNode("Chaud");
+	} 
 
-    else
-    {
-        root->left = createNode("Chaud");
-        root->right = createNode("Froid");
-    }
+	else
+	{
+		root->left = createNode("Chaud");
+		root->right = createNode("Froid");
+	}
 
 	if (strcmp(root->right->data, "Chaud") == 0) 
 	{
 		if (rand() % 2 == 0) 
 		{
-        	strcpy(root->right->left->data, "Printemps");
+			strcpy(root->right->left->data, "Printemps");
 			strcpy(root->right->right->data, "Été");
-        } 
+		} 
 
-        else 
-        {
+		else 
+		{
         	strcpy(root->right->left->data, "Été");
-			strcpy(root->right->right->data, "Printemps");
-        }
-    }
+        	strcpy(root->right->right->data, "Printemps");
+		}
+	}
 
-    if (strcmp(root->left->data, "Froid") == 0) 
-    {
-        if (rand() % 2 == 0) 
-        {
-            strcpy(root->left->left->data, "Automne");
+	if (strcmp(root->left->data, "Froid") == 0) 
+	{
+		if (rand() % 2 == 0) 
+		{
+			strcpy(root->left->left->data, "Automne");
             strcpy(root->left->right->data, "Hiver");
-        } 
+		} 
 
-        else 
-        {
-            strcpy(root->left->left->data, "Hiver");
-            strcpy(root->left->right->data, "Automne");
-        }
+		else 
+		{
+			strcpy(root->left->left->data, "Hiver");
+			strcpy(root->left->right->data, "Automne");
+		}
     }
-    return root;
+	
+	return root;
 }
 
 void printPrefix(Node* root) 
 {
-    if (root != NULL) 
-    {
-        if (root->on_off) 
-        {
-            printf("%s ", root->data);
-        }
+	if (root != NULL) 
+	{
+		if (root->on_off) 
+		{
+			printf("%s ", root->data);
+		}
+
         printPrefix(root->left);
-        printPrefix(root->right);
-    }
+		printPrefix(root->right);
+	}
 }
 
 void food_storage()
@@ -274,12 +276,12 @@ void outdoor_hazard()
 void add_flower(int x, int y, int pollen_capacity) 
 {
 	struct FlowerNode* field = NULL;
-    struct FlowerNode* new_flower = (struct FlowerNode*)malloc(sizeof(struct FlowerNode));
-    new_flower->x = x;
-    new_flower->y = y;
-    new_flower->pollen_capacity = pollen_capacity;
-    new_flower->next = field;
-    field = new_flower;
+	struct FlowerNode* new_flower = (struct FlowerNode*)malloc(sizeof(struct FlowerNode));
+	new_flower->x = x;
+	new_flower->y = y;
+	new_flower->pollen_capacity = pollen_capacity;
+	new_flower->next = field;
+	field = new_flower;
 }
 
 void display_field(struct FlowerNode* field) 
@@ -288,67 +290,65 @@ void display_field(struct FlowerNode* field)
 
     while (element != NULL) 
     {
-        printf("Flower's capacity is %d. At (%d, %d)\n", element->pollen_capacity, element->x, element->y);
-        element = element->next;
-    }
+		printf("Flower's capacity is %d. At (%d, %d)\n", element->pollen_capacity, element->x, element->y);
+		element = element->next;
+	}
 }
 
 void free_field(struct FlowerNode* field) 
 {
-    struct FlowerNode* element = field;
-    struct FlowerNode* next;
+	struct FlowerNode* element = field;
+	struct FlowerNode* next;
 
-    while (element != NULL) 
-    {
-        next = element->next;
-        free(element);
-        element = next;
-    }
+	while (element != NULL) 
+	{
+		next = element->next;
+		free(element);
+		element = next;
+	}
 
-    field = NULL;
+	field = NULL;
 }
 
 void create_field(struct FlowerNode* field) 
 {
-    int n = rand() % 15 + 1;  
-    for (int i = 0; i < n; ++i) 
-    {
-        int x = rand() % 10; 
-        int y = rand() % 10;  
-        int pollen_capacity = rand() % 10 + 1; 
-        add_flower(x, y, pollen_capacity);
-    }
+	int n = rand() % 15 + 1;  
+	for (int i = 0; i < n; ++i) 
+	{
+		int x = rand() % 10; 
+		int y = rand() % 10;  
+		int pollen_capacity = rand() % 10 + 1; 
+		add_flower(x, y, pollen_capacity);
+	}
 }
 
 void display_bee(struct bee* bee) 
 {
-    printf("Bee at (%d, %d) with %d pollen.\n", bee->x, bee->y, bee->pollen_collected);
+	printf("Bee at (%d, %d) with %d pollen.\n", bee->x, bee->y, bee->pollen_collected);
 }
 
 void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, int hive_y) 
 {
-    struct FlowerNode* current_flower = field;
+	struct FlowerNode* current_flower = field;
 
-    while (current_flower != NULL) 
-    {
-        int distance = abs(bee->x - current_flower->x) + abs(bee->y - current_flower->y);
+	while (current_flower != NULL) 
+	{
+		int distance = abs(bee->x - current_flower->x) + abs(bee->y - current_flower->y);
 
-        if (distance <= 3) 
-        {
-            printf("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n",
-                   bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y);
-
-            bee->pollen_collected += current_flower->pollen_capacity;
-            current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
-        }
+		if (distance <= 3) 
+		{
+			printf("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n", bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y);
+			bee->pollen_collected += current_flower->pollen_capacity;
+			current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
+		}
         current_flower = current_flower->next;
-    }
+	}
 
-    printf("Bee returning to the hive at (%d, %d) with %d pollen.\n",
+	printf("Bee returning to the hive at (%d, %d) with %d pollen.\n",
 	hive_x, hive_y, bee->pollen_collected);
 
-    bee->x = hive_x;
-    bee->y = hive_y;
+	bee->x = hive_x;
+	bee->y = hive_y;
 }
 
 void bee_to_queen_transformation()

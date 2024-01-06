@@ -14,7 +14,7 @@ int main()
  int numberofBee = rand() % 10 + 1;
  for (int i = 0; i < numberofBee; i++) 
  {
-        bee bee = create_bee(i + 1);
+		bee bee = create_bee(i + 1);
     }
  
 	struct hive* Hive = NULL;
@@ -30,38 +30,39 @@ int main()
 	printf("Number of females: %d\n", females);
 
 
-   int jour = 0;
-    char touche;
-    initscr();
-    while (1) 
+	int jour = 0;
+	char touche;
+	initscr();
+	while (1) 
 	{
-        touche = getch();
+		touche = getch();
 
-        if (touche == 'q') 
+		if (touche == 'q') 
 		{
-            printw("Fin de la simulation.\n");
-            break;
-        } else if (touche != ERR) 
+			printw("Fin de la simulation.\n");
+			break;
+		} else if (touche != ERR) 
 		{
-            jour++;
-            clear();
-            printw("jour : %d\n", jour);
-            refresh();
-        }
-    }
+			jour++;
+			clear();
+			printw("jour : %d\n", jour);
+			refresh();
+		}
+	}
 
 
-    endwin();
+	endwin();
 
-    // Champs  
-    struct FlowerNode* my_field = NULL;
-    create_field(&my_field);
-    display_field(my_field);
+	// Champs  
+	struct FlowerNode* my_field = NULL;
+	struct FlowerNode* season_node = NULL; // GROS DOUTE SUR CA A VERIFIER
+	create_field(&my_field, &season_node); // GROS DOUTE SUR CA A VERIFIER
+	display_field(my_field);
 	free_field(my_field);
 
-    struct bee* my_bee = {0, 0, 0};
-    int hive_x = 0;
-    int hive_y = 0;
+	struct bee* my_bee = {0, 0, 0};
+	int hive_x = 0;
+	int hive_y = 0;
 	
 	return 0;
 }

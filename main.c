@@ -33,7 +33,7 @@ clock_t start_time, end_time;
  int numberofBee = rand() % 10 + 1;
  for (int i = 0; i < numberofBee; i++) 
  {
-        Bee bee = creerAbeille(i + 1);
+        bee bee = create_bee(i + 1);
     }
  
 

@@ -4,3 +4,71 @@
 #include <math.h>
 #include <stdbool.h>
 #include <time.h>
+#include<ncurses.h>
+
+typedef struct role
+{
+    int queen;
+    int forager;
+    int receiver;
+    int drone;
+    int nanny;
+    int guard;
+    int bumblebee;
+    int larva;
+} role;
+
+typedef struct bee
+{
+	int x;
+    int y;
+    int pollen_collected;
+    int age;
+    int identifiant;
+    int pollen_capacity;
+    char sex;
+    role Role;
+} bee;
+
+typedef struct FlowerNode 
+{
+    int x;
+    int y;
+    int pollen_capacity;
+    struct FlowerNode* next;
+}FlowerNode;
+
+typedef struct hive
+{
+	bee* Bee;
+	int food_cap;
+	int food_lvl;
+	int total_larva;
+	int total_nannies;
+	int total_receivers;
+	int total_builders;
+	int total_guards;
+	int total_foragers;
+	int total_bees;
+	struct Node* root;
+}hive;
+
+typedef struct Node 
+{
+    struct Node* left;
+    struct Node* right;
+    bee beech;
+} Node;
+
+void bee_life_cycle(struct hive* hive ,int current_day);
+void warming_up_the_hive(struct hive *hive, int temperature, int current_day);
+Node* creerNode(bee bee);
+bee create_bee(int identifiant);
+hive create_hive(int food_capmax);
+int reproduce(hive *hive, int *males, int *females);
+void adding_bees_from_outside_the_hive(struct hive *hive);
+void add_flower(int x, int y, int pollen_capacity);
+void display_field(struct FlowerNode* field);
+void free_field(struct FlowerNode* field);
+void create_field(struct FlowerNode* field);
+void display_bee(struct bee* bee);

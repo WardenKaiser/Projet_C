@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include "projet.h"
 
+/*
 typedef struct role
 {
     int queen;
@@ -59,6 +60,7 @@ typedef struct Node
     bee beech;
 } Node;
 
+*/
 
 void bee_life_cycle(struct hive* hive ,int current_day)
 {

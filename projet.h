@@ -62,7 +62,7 @@ typedef struct Node
 	bool on_off;
 } Node;
 
-void bee_life_cycle(struct bee* bee ,int current_day);
+void bee_life_cycle(struct hive* hive ,int current_day);
 void warming_up_the_hive(struct hive *hive, int temperature, int current_day);
 Node* creerNode(bee bee);
 bee create_bee(int identifiant);

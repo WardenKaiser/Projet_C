@@ -268,7 +268,6 @@ void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, i
     bee->y = hive_y;
 }
 
-
 void bee_to_queen_transformation()
 {
 
@@ -293,7 +292,6 @@ void random_parameter()
 {
 
 }
-
 
 void bear_attack()
 {

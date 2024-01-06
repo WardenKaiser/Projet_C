@@ -9,26 +9,7 @@
 
 int main()
 {
-	/*int x;
-	printf("print\n");
-clock_t start_time, end_time;
-
-    start_time = clock();
-
-    while ( x !=1000)
-	{
-	printf("print\n");
-	x++;
-	}
 	
-    
-    end_time = clock();
-
-    
-    double elapsed_time = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
-    printf("Le temps écoulé est de %.2f secondes.\n", elapsed_time);
-	*/
-
  srand( time( NULL ) );
  int numberofBee = rand() % 10 + 1;
  for (int i = 0; i < numberofBee; i++) 

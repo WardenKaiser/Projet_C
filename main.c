@@ -35,10 +35,10 @@ clock_t start_time, end_time;
  {
         Bee bee = creerAbeille(i + 1);
     }
- hive Hive = create_hive(60000);
+ 
 
 hive Hive;
-	initialize_hive(&Hive);
+	create_hive(&Hive);
 
 	int males = 0;
 	int females = 0;

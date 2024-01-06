@@ -58,7 +58,7 @@ typedef struct Node
     struct Node* left;
     struct Node* right;
     bee beech;
-} Node;
+}Node;
 
 */
 
@@ -162,7 +162,7 @@ bee create_bee(int identifiant)
 }
 hive create_hive(int food_capmax)
 {
-	hive Hive;
+	struct hive Hive;
 	Hive.food_cap=food_capmax;
 	Hive.food_lvl=0;
 	Hive.Bee=NULL;

@@ -37,7 +37,7 @@ clock_t start_time, end_time;
     }
  
 
-hive Hive;
+	struct hive* Hive = NULL;
 	create_hive(&Hive);
 
 	int males = 0;

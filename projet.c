@@ -7,49 +7,49 @@
 
 void bee_life_cycle(struct hive* hive ,int current_day)
 {
-    if (current_day >= 1 && current_day <= 3)
-    {
-        hive->total_larva += 2000;
-    }
+	if (current_day >= 1 && current_day <= 3)
+	{
+		hive->total_larva += 2000;
+	}
 
-    if (current_day >= 4 && current_day <= 9)
-    {
-        hive->total_nannies = hive->total_larva;
-        hive->total_larva -= hive->total_nannies;
-    }
+	if (current_day >= 4 && current_day <= 9)
+	{
+		hive->total_nannies = hive->total_larva;
+		hive->total_larva -= hive->total_nannies;
+	}
 
-    if (current_day >= 10 && current_day <= 12)
-    {
-        hive->total_receivers = hive->total_nannies;
-        hive->total_nannies = 0;
-    }
+	if (current_day >= 10 && current_day <= 12)
+	{
+		hive->total_receivers = hive->total_nannies;
+		hive->total_nannies = 0;
+	}
 
-    if (current_day >= 13 && current_day <= 18)
-    {
-        hive->total_builders = hive->total_receivers;
-        hive->total_receivers = 0;
-    }
+	if (current_day >= 13 && current_day <= 18)
+	{
+		hive->total_builders = hive->total_receivers;
+		hive->total_receivers = 0;
+	}
 
-    if (current_day >= 19 && current_day <= 22)
-    {
-        hive->total_guards = hive->total_builders;
-        hive->total_builders = 0;
-    }
+	if (current_day >= 19 && current_day <= 22)
+	{
+		hive->total_guards = hive->total_builders;
+		hive->total_builders = 0;
+	}
 
-    if (current_day >= 23 && current_day <= 45)
-    {
-        hive->total_foragers = hive->total_guards;
-        hive->total_guards = 0;
-    }
+	if (current_day >= 23 && current_day <= 45)
+	{
+		hive->total_foragers = hive->total_guards;
+		hive->total_guards = 0;
+	}
 
-    if (current_day > 45)
-    {
-        hive->total_foragers = 0;
-        hive->total_guards = 0;
-        hive->total_builders = 0;
-        hive->total_receivers = 0;
-        hive->total_nannies = 0;
-    }
+	if (current_day > 45)
+	{
+		hive->total_foragers = 0;
+		hive->total_guards = 0;
+		hive->total_builders = 0;
+		hive->total_receivers = 0;
+		hive->total_nannies = 0;
+	}
 }
 
 void warming_up_the_hive(struct hive *hive, int temperature, int current_day) 
@@ -135,18 +135,19 @@ int reproduce(hive *hive, int *males, int *females)
 }
 void adding_bees_from_outside_the_hive(struct hive *hive)
 {
-    srand(time(NULL));
-    int chance = rand() % 100;
-    int chanceToAddBees = 30; 
+	srand(time(NULL));
+	int chance = rand() % 100;
+	int chanceToAddBees = 30; 
 
-    if (chance < chanceToAddBees)
-    {      
-        int new_bees_from_outside;
-        new_bees_from_outside = rand() % 30 + 1;
+	if (chance < chanceToAddBees)
+	{      
+		int new_bees_from_outside;
+		new_bees_from_outside = rand() % 30 + 1;
 
-        printf("Lucky you ! U found %d new bees !\n", new_bees_from_outside);
-        hive->total_foragers += new_bees_from_outside;
+		printf("Lucky you ! U found %d new bees !\n", new_bees_from_outside);
+		hive->total_foragers += new_bees_from_outside;
     }
+    
     else
     {
         printf("Nothing u found nothing...\n");
@@ -163,9 +164,101 @@ void food_recovery()
 
 }
 
-void season_management()
+Node* createNode(const char* data) 
 {
+	struct Node* newNode = (Node*)malloc(sizeof(Node));
+	strcpy(newNode->data, data);
+	newNode->on_off = true;
+	newNode->left = NULL;
+	newNode->right = NULL;
+    
+	return newNode;
+}
 
+void removeSeason(Node* root, const char* season) 
+{
+	if (root == NULL) 
+	{
+		return;
+	}
+
+	if (root->left != NULL && strcmp(root->left->data, season) == 0) 
+	{
+		free(root->left);
+		root->left = NULL;
+	} 
+
+    else if (root->right != NULL && strcmp(root->right->data, season) == 0) 
+    {
+        free(root->right);
+        root->right = NULL;
+    }
+
+    removeSeason(root->left, season);
+    removeSeason(root->right, season);
+}
+
+Node* generateWorld() 
+{
+    srand(time(NULL));
+
+    Node* root = createNode("Monde");
+
+    if (rand() % 2 == 0) 
+    {
+        root->left = createNode("Froid");
+        root->right = createNode("Chaud");
+    } 
+
+    else
+    {
+        root->left = createNode("Chaud");
+        root->right = createNode("Froid");
+    }
+
+	if (strcmp(root->right->data, "Chaud") == 0) 
+	{
+		if (rand() % 2 == 0) 
+		{
+        	strcpy(root->right->left->data, "Printemps");
+			strcpy(root->right->right->data, "Été");
+        } 
+
+        else 
+        {
+        	strcpy(root->right->left->data, "Été");
+			strcpy(root->right->right->data, "Printemps");
+        }
+    }
+
+    if (strcmp(root->left->data, "Froid") == 0) 
+    {
+        if (rand() % 2 == 0) 
+        {
+            strcpy(root->left->left->data, "Automne");
+            strcpy(root->left->right->data, "Hiver");
+        } 
+
+        else 
+        {
+            strcpy(root->left->left->data, "Hiver");
+            strcpy(root->left->right->data, "Automne");
+        }
+    }
+    return root;
+}
+
+void printPrefix(Node* root) 
+{
+    if (root != NULL) 
+    {
+        if (root->on_off) 
+        {
+            printf("%s ", root->data);
+        }
+        printPrefix(root->left);
+        printPrefix(root->right);
+    }
 }
 
 void food_storage()

@@ -58,6 +58,9 @@ typedef struct Node
     struct Node* left;
     struct Node* right;
     bee beech;
+    char data[20];
+    bool on_off;
+
 } Node;
 
 void bee_life_cycle(struct hive* hive ,int current_day);

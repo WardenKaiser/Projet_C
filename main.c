@@ -36,7 +36,6 @@ clock_t start_time, end_time;
         bee bee = create_bee(i + 1);
     }
  
-
 	struct hive* Hive = NULL;
 	create_hive(&Hive);
 

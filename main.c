@@ -70,12 +70,18 @@ hive Hive;
         }
     }
 
+
     endwin();
 
-    // Champs
-    create_field();
-    display_field();
-    free_field();
-return 0;
+    // Champs  
+    struct FlowerNode* my_field = NULL;
+    create_field(&my_field);
+    display_field(my_field);
+	free_field(my_field);
 
+    struct bee my_bee = {0, 0, 0};
+    int hive_x = 0;
+    int hive_y = 0;
+	
+	return 0;
 }

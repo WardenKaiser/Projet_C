@@ -19,6 +19,9 @@ typedef struct role
 
 typedef struct bee
 {
+	int x;
+    int y;
+    int pollen_collected;
     int age;
     int identifiant;
     int pollen_capacity;
@@ -236,7 +239,7 @@ void outdoor_hazard()
 
 }
 
-void shortest_path() // Algo de Dijkra
+void shortest_path() 
 {
 
 }
@@ -289,6 +292,38 @@ void create_field(struct FlowerNode* field)
         add_flower(x, y, pollen_capacity);
     }
 }
+
+void display_bee(struct bee* bee) 
+{
+    printf("Bee at (%d, %d) with %d pollen.\n", bee->x, bee->y, bee->pollen_collected);
+}
+
+void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, int hive_y) 
+{
+    FlowerNode* current_flower = field;
+
+    while (current_flower != NULL) 
+    {
+        int distance = abs(bee->x - current_flower->x) + abs(bee->y - current_flower->y);
+
+        if (distance <= 3) 
+        {
+            printf("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n",
+                   bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y);
+
+            bee->pollen_collected += current_flower->pollen_capacity;
+            current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
+        }
+        current_flower = current_flower->next;
+    }
+
+    printf("Bee returning to the hive at (%d, %d) with %d pollen.\n",
+	hive_x, hive_y, bee->pollen_collected);
+
+    bee->x = hive_x;
+    bee->y = hive_y;
+}
+
 
 void bee_to_queen_transformation()
 {

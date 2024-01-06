@@ -7,7 +7,7 @@
 #include<ncurses.h>
 #include "projet.h"
 
-int main(int argc, char const *argv[])
+int main()
 {
 	/*int x;
 	printf("print\n");
@@ -79,7 +79,7 @@ hive Hive;
     display_field(my_field);
 	free_field(my_field);
 
-    struct bee my_bee = {0, 0, 0};
+    struct bee* my_bee = {0, 0, 0};
     int hive_x = 0;
     int hive_y = 0;
 	

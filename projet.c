@@ -303,7 +303,7 @@ void free_field(struct FlowerNode* field)
 	field = NULL;
 }
 
-void create_field(struct FlowerNode* field) 
+void create_field(struct FlowerNode* field, struct Node* season_node) 
 {
 	int n = rand() % 15 + 1;  
 	for (int i = 0; i < n; ++i) 

@@ -74,3 +74,4 @@ void display_field(struct FlowerNode* field);
 void free_field(struct FlowerNode* field);
 void create_field(struct FlowerNode* field);
 void display_bee(struct bee* bee);
+void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, int hive_y);

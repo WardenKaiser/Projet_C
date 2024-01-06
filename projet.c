@@ -232,12 +232,12 @@ void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, i
                    bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y);
 
             bee->pollen_collected += current_flower->pollen_capacity;
-            current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
+            current_flower->pollen_capacity = 0;
         }
         current_flower = current_flower->next;
     }
 
-    printf("Bee returning to the hive at (%d, %d) with %d pollen.\n",
+	printf("Bee returning to the hive at (%d, %d) with %d pollen.\n",
 	hive_x, hive_y, bee->pollen_collected);
 
     bee->x = hive_x;

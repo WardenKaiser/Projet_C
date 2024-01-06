@@ -5,50 +5,38 @@
 #include <stdbool.h>
 #include "projet.h"
 
-void bee_life_cycle(struct hive* hive ,int current_day)
+void bee_life_cycle(struct bee* bee ,int current_day)
 {
 	if (current_day >= 1 && current_day <= 3)
 	{
-		hive->total_larva += 2000;
+		bee->Role.larva;
 	}
 
 	if (current_day >= 4 && current_day <= 9)
 	{
-		hive->total_nannies = hive->total_larva;
-		hive->total_larva -= hive->total_nannies;
+		bee->Role.nanny;
 	}
 
 	if (current_day >= 10 && current_day <= 12)
 	{
-		hive->total_receivers = hive->total_nannies;
-		hive->total_nannies = 0;
+		bee->Role.receiver;
 	}
 
 	if (current_day >= 13 && current_day <= 18)
 	{
-		hive->total_builders = hive->total_receivers;
-		hive->total_receivers = 0;
+		bee->Role.guard;
 	}
 
-	if (current_day >= 19 && current_day <= 22)
+	if (current_day >= 19 && current_day <= 45)
 	{
-		hive->total_guards = hive->total_builders;
-		hive->total_builders = 0;
-	}
-
-	if (current_day >= 23 && current_day <= 45)
-	{
-		hive->total_foragers = hive->total_guards;
-		hive->total_guards = 0;
+		bee->Role.forager;
 	}
 
 	if (current_day > 45)
 	{
-		hive->total_foragers = 0;
-		hive->total_guards = 0;
-		hive->total_builders = 0;
-		hive->total_receivers = 0;
-		hive->total_nannies = 0;
+		bee->age=45;
+        bee->pollen_capacity=0;
+        bee->pollen_collected=0;
 	}
 }
 

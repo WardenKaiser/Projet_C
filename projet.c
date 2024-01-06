@@ -133,27 +133,27 @@ void warming_up_the_hive(struct hive *hive, int temperature, int current_day)
         printf("All good\n");
     }
 }
-
-Node* creerNode(bee bee) {
+Node* creerNode(bee bee) 
+{
     Node* node = (Node*)malloc(sizeof(Node));
-    if (node != NULL) {
+    if (node != NULL) 
+    {
         node->left = NULL;
         node->right = NULL;
         node->beech = bee;
     }
     return node;
 }
-
 bee create_bee(int identifiant)
 {
 	bee Bee;
 	Bee.identifiant=identifiant;
-	Bee.sex=rand()% 2==0?'M':'F';
+	Bee.sex=rand()% 100 < 5?'M':'F';
 	Bee.age=0;
 	Bee.Role.larva;
+    
 	return Bee;
 }
-
 hive create_hive(int food_capmax)
 {
 	hive Hive;
@@ -164,12 +164,27 @@ hive create_hive(int food_capmax)
 	return Hive;
 	
 }
-
-void reproduction()
+int reproduce(hive *hive, int *males, int *females)
 {
-
+	int total_children = 0;
+	for (int i = 0; i < 10; i++)
+	{
+		bee child = create_bee(hive->total_bees + total_children + 1);
+		child.Role.larva;
+		hive->total_bees++;
+		total_children++;
+		switch (child.sex)
+		{
+		case 'M':
+			*males++;
+			break;
+		case 'F':
+			*females++;
+			break;
+		}
+	}
+	return total_children;
 }
-
 void adding_bees_from_outside_the_hive(struct hive *hive)
 {
     srand(time(NULL));
@@ -195,7 +210,7 @@ void queen_feeding()
 
 }
 
-void feed_recovery()
+void food_recovery()
 {
 
 }

@@ -36,6 +36,20 @@ clock_t start_time, end_time;
         Bee bee = creerAbeille(i + 1);
     }
  hive Hive = create_hive(60000);
+
+hive Hive;
+	initialize_hive(&Hive);
+
+	int males = 0;
+	int females = 0;
+
+	int total_children = reproduce(&Hive, &males, &females);
+
+	printf("Number of children: %d\n", total_children);
+	printf("Number of males: %d\n", males);
+	printf("Number of females: %d\n", females);
+
+
    int jour = 0;
     char touche;
     initscr();
@@ -45,7 +59,7 @@ clock_t start_time, end_time;
 
         if (touche == 'q') 
 		{
-            printw("Sortie du programme.\n");
+            printw("Fin de la simulation.\n");
             break;
         } else if (touche != ERR) 
 		{

@@ -173,17 +173,7 @@ void food_storage()
 
 }
 
-void predator()
-{
-
-}
-
 void outdoor_hazard()
-{
-
-}
-
-void shortest_path() 
 {
 
 }
@@ -289,11 +279,6 @@ void timer_counter()
 }
 
 void random_parameter()
-{
-
-}
-
-void bear_attack()
 {
 
 }

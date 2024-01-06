@@ -29,7 +29,6 @@ typedef struct bee
     role Role;
 } bee;
 
-// Structure pour une fleur
 typedef struct FlowerNode 
 {
     int x;
@@ -246,8 +245,8 @@ void shortest_path()
 
 void add_flower(int x, int y, int pollen_capacity) 
 {
-	FlowerNode* field = NULL;
-    FlowerNode* new_flower = (FlowerNode*)malloc(sizeof(FlowerNode));
+	struct FlowerNode* field = NULL;
+    struct FlowerNode* new_flower = (struct FlowerNode*)malloc(sizeof(struct FlowerNode));
     new_flower->x = x;
     new_flower->y = y;
     new_flower->pollen_capacity = pollen_capacity;
@@ -300,7 +299,7 @@ void display_bee(struct bee* bee)
 
 void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, int hive_y) 
 {
-    FlowerNode* current_flower = field;
+    struct FlowerNode* current_flower = field;
 
     while (current_flower != NULL) 
     {

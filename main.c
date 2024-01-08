@@ -11,14 +11,16 @@ int main(int argc, char const *argv[])
 {
 	
  srand( time( NULL ) );
+ struct hive Hive = create_hive(100);
  int numberofBee = rand() % 10 + 1;
  for (int i = 0; i < numberofBee; i++) 
  {
 		bee bee = create_bee(i + 1);
+		Hive.total_bees++;
     }
  
-	struct hive* Hive = NULL;
-	create_hive(&Hive);
+	/*struct hive Hive = create_hive(100);
+	
 
 	int males = 0;
 	int females = 0;
@@ -28,7 +30,7 @@ int main(int argc, char const *argv[])
 	printw("Number of children: %d\n", total_children);
 	printw("Number of males: %d\n", males);
 	printw("Number of females: %d\n", females);
-
+*/
 
 	int current_day = 0;
 	char touche;
@@ -36,6 +38,13 @@ int main(int argc, char const *argv[])
 	while (1) 
 	{
 		touche = getch();
+		
+	
+
+	int males = 0;
+	int females = 0;
+
+	int total_children = reproduce(&Hive, &males, &females,current_day);
 			struct FlowerNode* my_field = NULL;
 			struct FlowerNode* season_node = NULL; // GROS DOUTE SUR CA A VERIFIER
 			create_field(&my_field, &season_node); // GROS DOUTE SUR CA A VERIFIER		
@@ -49,7 +58,13 @@ int main(int argc, char const *argv[])
 			current_day++;
 			clear();
 			printw("jour : %d\n", current_day);
-
+ 	printw("Food Capacity: %d\n", Hive.food_cap);
+    printw("Current Food Level: %d\n", Hive.food_lvl);
+    printw("Total Bees: %d\n", Hive.total_bees);
+	printw("enfants:%d\n",total_children);
+	printw("Number of males: %d\n", males);
+	printw("Number of females: %d\n", females);
+   
 			display_field(my_field);
 			free_field(my_field);	
 //			test();		

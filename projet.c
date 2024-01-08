@@ -387,22 +387,46 @@ void adding_bees_from_outside_the_hive(struct hive* hive, struct Node* season_no
 	}
 }
 
-void queen_feeding()
-{
 
+
+void queen_feeding(struct hive* hive)
+{
+    int queen_consuption = 5; // Cette valeur est arbitraire et peut être ajustée selon les besoins
+
+    if (hive->royalJelly_lvl>= queen_consuption)
+    {
+        hive->royalJelly_lvl -= queen_consuption;
+    }
+    else
+    {
+        printf("not enough royalJelly to feed the queen.\n");
+    }
 }
 
-void food_recovery()
+void convert_royalJelly(struct hive* hive)
 {
+    int total_food = hive->food_lvl;
+    int amount_royalJelly = total_food * 0.2;
+    hive->food_lvl -= amount_royalJelly;
+    hive->royalJelly_lvl += amount_royalJelly;
+}
 
+
+void food_recovery(struct bee* bee,struct hive* hive ,int hive_x, int hive_y)
+{
+    bee->x = hive_x;
+    bee->y = hive_y;
+    hive->food_lvl += bee->pollen_collected;
+    bee->pollen_collected = 0;
 }
 
 
 
-void food_storage()
+
+/*void food_storage()
 {
 
-}
+}*/
 
 void outdoor_hazard()
 {

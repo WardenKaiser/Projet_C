@@ -43,6 +43,7 @@ typedef struct hive
 	bee* Bee;
 	int food_cap;
 	int food_lvl;
+	int royalJelly_lvl;
 	int total_larva;
 	int total_nannies;
 	int total_receivers;

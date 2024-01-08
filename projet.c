@@ -387,8 +387,6 @@ void adding_bees_from_outside_the_hive(struct hive* hive, struct Node* season_no
 	}
 }
 
-
-
 void queen_feeding(struct hive* hive)
 {
     int queen_consuption = 5; // Cette valeur est arbitraire et peut être ajustée selon les besoins
@@ -425,7 +423,7 @@ struct hiveNode_hive2* create_hive2(int bees_hive2)
     struct hiveNode_hive2* node_2 = malloc(sizeof(hiveNode_hive2));
     node_2->bees_hive2 = bees_hive2;
     node_2->left = node_2->right = NULL;
-    
+
     return node_2;
 }
 
@@ -444,9 +442,39 @@ int totalBees2(hiveNode_hive2* root)
 
 }*/
 
-void outdoor_hazard()
+void destroy_hive2(struct hiveNode_hive2* root)
 {
+	if (root == NULL)
+	{
+		return;
+	}
 
+	destroy_hive2(root->left);
+	destroy_hive2(root->right);
+
+    free(root);
+}
+
+
+void outdoor_hazard(struct hive* hive, struct Node* season_node)
+{
+	srand(time(NULL));
+
+	int hazard_chance = rand() % 15;
+
+	if (hazard_chance == 0)
+	{
+		printf("Your friendly hive neighbour has been destroyed...\n");
+
+		int total_bees_before_destruction = totalBees2(hive->hiveNode_hive2);
+
+		destroy_hive2(hive->hiveNode_hive2);
+
+		int bees_to_add = total_bees_before_destruction * (40 + rand() % 11) / 100;
+		hive->total_foragers += bees_to_add;
+
+		printf("You found %d bees !\n", bees_to_add);
+	}
 }
 
 
@@ -456,22 +484,9 @@ void bee_to_queen_transformation()
 
 }
 
-void hive_capacity()
-{
-
-}
-
+/*
 void action_between_recipient_bultine_bees()
 {
 
 }
-
-void timer_counter()
-{
-
-}
-
-void random_parameter()
-{
-
-}
+*/

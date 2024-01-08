@@ -25,9 +25,9 @@ int main(int argc, char const *argv[])
 
 	int total_children = reproduce(&Hive, &males, &females);
 
-	printf("Number of children: %d\n", total_children);
-	printf("Number of males: %d\n", males);
-	printf("Number of females: %d\n", females);
+	printw("Number of children: %d\n", total_children);
+	printw("Number of males: %d\n", males);
+	printw("Number of females: %d\n", females);
 
 
 	int current_day = 0;
@@ -49,7 +49,7 @@ int main(int argc, char const *argv[])
 			current_day++;
 			clear();
 			printw("jour : %d\n", current_day);
-
+			add_flower(my_field);
 			display_field(my_field);
 			free_field(my_field);	
 			test();		

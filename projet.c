@@ -420,8 +420,24 @@ void food_recovery(struct bee* bee,struct hive* hive ,int hive_x, int hive_y)
     bee->pollen_collected = 0;
 }
 
+struct hiveNode_hive2* create_hive2(int bees_hive2)
+{
+    struct hiveNode_hive2* node_2 = malloc(sizeof(hiveNode_hive2));
+    node_2->bees_hive2 = bees_hive2;
+    node_2->left = node_2->right = NULL;
+    
+    return node_2;
+}
 
+int totalBees2(hiveNode_hive2* root) 
+{
+	if (root == NULL)
+	{
+		return 0;
+    }
 
+	return root->bees_hive2 + totalBees2(root->left) + totalBees2(root->right);
+}
 
 /*void food_storage()
 {

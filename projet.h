@@ -63,6 +63,13 @@ typedef struct Node
 	bool on_off;
 } Node;
 
+typedef struct hiveNode_hive2
+{
+	int bees_hive2;
+	struct hiveNode_hive2* left;
+	struct hiveNode_hive2* right;
+} hiveNode_hive2;
+
 void bee_life_cycle(struct bee* bee ,int current_day);
 void warming_up_the_hive(struct hive *hive, int temperature, int current_day);
 Node* creerNode(bee bee);
@@ -76,3 +83,5 @@ void free_field(struct FlowerNode* field);
 void create_field(struct FlowerNode* field, struct Node* season_node);
 void display_bee(struct bee* bee);
 void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, int hive_y);
+struct hiveNode_hive2* create_hive2(int bees_hive2);
+int totalBees2(hiveNode_hive2* root);

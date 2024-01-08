@@ -483,13 +483,28 @@ void outdoor_hazard(struct hive* hive, struct Node* season_node)
 			hive->total_foragers += bees_to_add;
 
 			printf("You found %d bees!\n", bees_to_add);
+
+			if (hive->total_foragers > 0)
+			{
+				int wasp_chance = rand() % 8;
+
+				if (wasp_chance == 0)
+				{
+					int percentage_to_kill = 30 + rand() % 21;
+
+					int bees_killed = (percentage_to_kill * hive->total_foragers) / 100;
+					hive->total_foragers -= bees_killed;
+
+					printf("Oh no! Wasps attacked and killed %d bees!\n", bees_killed);
+				}
+			}
 		}
 
 		else
 		{
-			printf("The hive neighbour is already destroyed !\n");
-        }
-    }
+			printf("The hive neighbour is already destroyed!\n");
+		}
+	}
 }
 
 

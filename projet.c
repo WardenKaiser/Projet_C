@@ -307,6 +307,8 @@ bee create_bee(int identifiant)
 	Bee.identifiant=identifiant;
 	Bee.sex=rand()% 100 < 5?'M':'F';
 	Bee.age=0;
+	Bee.pollen_collected=0;
+	Bee.pollen_capacity=0;
 	Bee.Role.larva;
     
 	return Bee;
@@ -389,7 +391,7 @@ void adding_bees_from_outside_the_hive(struct hive* hive, struct Node* season_no
 
 void queen_feeding(struct hive* hive)
 {
-    int queen_consuption = 5; // Cette valeur est arbitraire et peut être ajustée selon les besoins
+    int queen_consuption = 2;
 
     if (hive->royalJelly_lvl>= queen_consuption)
     {

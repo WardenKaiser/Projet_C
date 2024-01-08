@@ -85,3 +85,6 @@ void display_bee(struct bee* bee);
 void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, int hive_y);
 struct hiveNode_hive2* create_hive2(int bees_hive2);
 int totalBees2(hiveNode_hive2* root);
+void convert_royalJelly(struct hive* hive);
+void food_recovery(struct bee* bee,struct hive* hive ,int hive_x, int hive_y);
+void queen_feeding(struct hive* hive);

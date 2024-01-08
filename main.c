@@ -7,7 +7,7 @@
 #include<ncurses.h>
 #include "projet.h"
 
-int main()
+int main(int argc, char const *argv[])
 {
 	
  srand( time( NULL ) );

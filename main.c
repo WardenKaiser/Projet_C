@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
 	printf("Number of females: %d\n", females);
 
 
-	int jour = 0;
+	int current_day = 0;
 	char touche;
 	initscr();
 	while (1) 
@@ -43,9 +43,9 @@ int main(int argc, char const *argv[])
 			break;
 		} else if (touche != ERR) 
 		{
-			jour++;
+			current_day++;
 			clear();
-			printw("jour : %d\n", jour);
+			printw("jour : %d\n", current_day);
 			refresh();
 		}
 	}

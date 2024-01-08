@@ -251,8 +251,7 @@ void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, i
         current_flower = current_flower->next;
 	}
 
-	printf("Bee returning to the hive at (%d, %d) with %d pollen.\n",
-	hive_x, hive_y, bee->pollen_collected);
+	printf("Bee returning to the hive at (%d, %d) with %d pollen.\n", hive_x, hive_y, bee->pollen_collected);
 
 	bee->x = hive_x;
 	bee->y = hive_y;

@@ -80,7 +80,7 @@ void adding_bees_from_outside_the_hive(struct hive* hive, struct Node* season_no
 void add_flower(struct FlowerNode** field);
 void display_field(struct FlowerNode* field);
 void free_field(struct FlowerNode* field);
-void create_field(struct FlowerNode* field, struct Node* season_node);
+void create_field(struct FlowerNode** field, struct Node* season_node);
 void display_bee(struct bee* bee);
 void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, int hive_y);
 struct hiveNode_hive2* create_hive2(int bees_hive2);

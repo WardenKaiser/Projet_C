@@ -111,31 +111,36 @@ void removeSeason(Node* root, const char* season)
 	removeSeason(root->right, season);
 }
 
-void bee_life_cycle(struct bee* bee ,int current_day)
+void bee_life_cycle(struct bee* bee ,int current_day,struct hive* hive)
 {
 	if (current_day >= 1 && current_day <= 3)
 	{
 		bee->Role.larva;
+		hive->total_larva++;
 	}
 
 	if (current_day >= 4 && current_day <= 9)
 	{
 		bee->Role.nanny;
+		hive->total_nannies++;
 	}
 
 	if (current_day >= 10 && current_day <= 12)
 	{
 		bee->Role.receiver;
+		hive->total_receivers;
 	}
 	
 	if (current_day >= 13 && current_day <= 18)
 	{
 		bee->Role.guard;
+		hive->total_guards;
 	}
 
 	if (current_day >= 19 && current_day <= 45)
 	{
 		bee->Role.forager;
+		hive->total_foragers++;
 	}
 
 	if (current_day > 45)
@@ -143,6 +148,8 @@ void bee_life_cycle(struct bee* bee ,int current_day)
 		bee->age=45;
         bee->pollen_capacity=0;
         bee->pollen_collected=0;
+		hive->total_foragers--;
+		hive->total_bees--;
 	}
 }
 
@@ -330,7 +337,6 @@ int reproduce(hive *hive, int *males, int *females)
 	for (int i = 0; i < 10; i++)
 	{
 		bee child = create_bee(hive->total_bees + total_children + 1);
-		child.Role.larva;
 		hive->total_bees++;
 		total_children++;
 		switch (child.sex)
@@ -460,41 +466,28 @@ void destroy_hive2(struct hiveNode_hive2* root)
 
 void outdoor_hazard(struct hive* hive, struct Node* season_node)
 {
-    srand(time(NULL));
-    int hazard_chance = rand() % 15;
+	srand(time(NULL));
+	int hazard_chance = rand() % 15;
 
-    if (hazard_chance == 0)
-    {
-        printf("Your friendly hive neighbour has been destroyed...\n");
+	if (hazard_chance == 0)
+	{
+		printf("Your friendly hive neighbour has been destroyed...\n");
 
-        if (hive->root != NULL)
-        {
-            int total_bees_before_destruction = totalBees2(hive->root);
+		if (hive->root != NULL)
+		{
+			int total_bees_before_destruction = totalBees2(hive->root);
 
-            destroy_hive2(hive->root);
+			destroy_hive2(hive->root);
 
-            int bees_to_add = total_bees_before_destruction * (40 + rand() % 11) / 100;
-            hive->total_foragers += bees_to_add;
+			int bees_to_add = total_bees_before_destruction * (40 + rand() % 11) / 100;
+			hive->total_foragers += bees_to_add;
 
-            printf("You found %d bees!\n", bees_to_add);
+			printf("You found %d bees!\n", bees_to_add);
+		}
 
-            if (hive->total_foragers > 0)
-            {
-                int wasp_chance = rand() % 8;
-                if (wasp_chance == 0)
-                {
-                    int percentage_to_kill = 30 + rand() % 21;
-
-                    int bees_killed = (percentage_to_kill * hive->total_foragers) / 100;
-                    hive->total_foragers -= bees_killed;
-
-                    printf("Oh no! Wasps attacked and killed %d bees!\n", bees_killed);
-                }
-            }
-        }
-        else
-        {
-            printf("The hive neighbour is already destroyed!\n");
+		else
+		{
+			printf("The hive neighbour is already destroyed !\n");
         }
     }
 }

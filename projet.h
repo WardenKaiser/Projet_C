@@ -70,7 +70,7 @@ typedef struct hiveNode_hive2
 	struct hiveNode_hive2* right;
 } hiveNode_hive2;
 
-void bee_life_cycle(struct bee* bee ,int current_day);
+void bee_life_cycle(struct bee* bee ,int current_day,struct hive* hive);
 void warming_up_the_hive(struct hive *hive, int temperature, int current_day);
 Node* creerNode(bee bee);
 bee create_bee(int identifiant);

@@ -39,7 +39,7 @@ int main(int argc, char const *argv[])
 			struct FlowerNode* my_field = NULL;
 			struct FlowerNode* season_node = NULL; // GROS DOUTE SUR CA A VERIFIER
 			create_field(&my_field, &season_node); // GROS DOUTE SUR CA A VERIFIER		
-
+			add_flower(my_field);
 		if (touche == 'q') 
 		{
 			printw("Fin de la simulation.\n");
@@ -49,10 +49,10 @@ int main(int argc, char const *argv[])
 			current_day++;
 			clear();
 			printw("jour : %d\n", current_day);
-			add_flower(my_field);
+
 			display_field(my_field);
 			free_field(my_field);	
-			test();		
+//			test();		
 
 
 			refresh();

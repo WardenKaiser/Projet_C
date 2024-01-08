@@ -198,8 +198,13 @@ void create_field(struct FlowerNode* field, struct Node* season_node)
             n += 0;
         }    
 
-		add_flower(&field);
+		add_flower(field); 
     }
+}
+
+void test()
+{
+	printf("Test TEST EST\n");
 }
 
 void display_field(struct FlowerNode* field) 

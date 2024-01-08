@@ -173,7 +173,7 @@ void create_field(struct FlowerNode* field, struct Node* season_node)
 
     for (int i = 0; i < n; ++i) 
     {
-        int x = rand() % 10; 
+		int x = (rand() % 10) + 1; 
         int y = rand() % 10;  
         int pollen_capacity = rand() % 10 + 1;
 
@@ -200,11 +200,6 @@ void create_field(struct FlowerNode* field, struct Node* season_node)
 
 		add_flower(field); 
     }
-}
-
-void test()
-{
-	printf("Test TEST EST\n");
 }
 
 void display_field(struct FlowerNode* field) 

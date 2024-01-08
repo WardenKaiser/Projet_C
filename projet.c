@@ -208,7 +208,7 @@ void display_field(struct FlowerNode* field)
 
     while (element != NULL) 
     {
-		printf("Flower's capacity is %d. At (%d, %d)\n", element->pollen_capacity, element->x, element->y);
+		printw("Flower's capacity is %d. At (%d, %d)\n", element->pollen_capacity, element->x, element->y);
 		element = element->next;
 	}
 }
@@ -243,15 +243,14 @@ void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, i
 
         if (distance <= 3) 
         {
-            printf("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n",
-                   bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y);
+            printf("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n", bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y);
 
             bee->pollen_collected += current_flower->pollen_capacity;
             current_flower->pollen_capacity = 0;
         }
 		if (distance <= 3) 
 		{
-			printf("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n", bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y);
+			printf("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n", bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y); 
 			bee->pollen_collected += current_flower->pollen_capacity;
 			current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
 		}

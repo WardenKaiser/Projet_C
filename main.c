@@ -36,6 +36,9 @@ int main(int argc, char const *argv[])
 	while (1) 
 	{
 		touche = getch();
+			struct FlowerNode* my_field = NULL;
+			struct FlowerNode* season_node = NULL; // GROS DOUTE SUR CA A VERIFIER
+			create_field(&my_field, &season_node); // GROS DOUTE SUR CA A VERIFIER		
 
 		if (touche == 'q') 
 		{
@@ -46,6 +49,12 @@ int main(int argc, char const *argv[])
 			current_day++;
 			clear();
 			printw("jour : %d\n", current_day);
+
+			display_field(my_field);
+			free_field(my_field);	
+			test();		
+
+
 			refresh();
 		}
 	}
@@ -53,12 +62,7 @@ int main(int argc, char const *argv[])
 
 	endwin();
 
-	// Champs  
-	struct FlowerNode* my_field = NULL;
-	struct FlowerNode* season_node = NULL; // GROS DOUTE SUR CA A VERIFIER
-	create_field(&my_field, &season_node); // GROS DOUTE SUR CA A VERIFIER
-	display_field(my_field);
-	free_field(my_field);
+
 
 	struct bee* my_bee = {0, 0, 0};
 	int hive_x = 0;

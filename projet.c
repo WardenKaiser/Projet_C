@@ -155,7 +155,7 @@ void bee_life_cycle(struct bee* bee ,int current_day,struct hive* hive)
 
 void add_flower(struct FlowerNode** field) 
 {
-    int x = rand() % 10; 
+    int x = (rand() % 10) + 1; 
     int y = rand() % 10;
     int pollen_capacity = rand() % 10 + 1;
 
@@ -167,13 +167,13 @@ void add_flower(struct FlowerNode** field)
     *field = new_flower; // GROS DOUTE SUR CA A VERIFIER
 }
 
-void create_field(struct FlowerNode* field, struct Node* season_node) 
+void create_field(struct FlowerNode** field, struct Node* season_node) 
 {
     int n = rand() % 15 + 1;
 
     for (int i = 0; i < n; ++i) 
     {
-		int x = (rand() % 10) + 1; 
+        int x = (rand() % 10) + 1; 
         int y = rand() % 10;  
         int pollen_capacity = rand() % 10 + 1;
 
@@ -198,7 +198,7 @@ void create_field(struct FlowerNode* field, struct Node* season_node)
             n += 0;
         }    
 
-		add_flower(field); 
+        add_flower(field); 
     }
 }
 

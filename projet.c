@@ -461,22 +461,29 @@ void destroy_hive2(struct hiveNode_hive2* root)
 void outdoor_hazard(struct hive* hive, struct Node* season_node)
 {
 	srand(time(NULL));
-
 	int hazard_chance = rand() % 15;
 
 	if (hazard_chance == 0)
 	{
 		printf("Your friendly hive neighbour has been destroyed...\n");
 
-		int total_bees_before_destruction = totalBees2(hive->hiveNode_hive2);
+		if (hive->root != NULL)
+		{
+			int total_bees_before_destruction = totalBees2(hive->root);
 
-		destroy_hive2(hive->hiveNode_hive2);
+			destroy_hive2(hive->root);
 
-		int bees_to_add = total_bees_before_destruction * (40 + rand() % 11) / 100;
-		hive->total_foragers += bees_to_add;
+			int bees_to_add = total_bees_before_destruction * (40 + rand() % 11) / 100;
+			hive->total_foragers += bees_to_add;
 
-		printf("You found %d bees !\n", bees_to_add);
-	}
+			printf("You found %d bees!\n", bees_to_add);
+		}
+
+		else
+		{
+			printf("The hive neighbour is already destroyed !\n");
+        }
+    }
 }
 
 

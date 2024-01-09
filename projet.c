@@ -323,10 +323,10 @@ hive create_hive(int food_capmax)
 	return Hive;
 }
 
-int reproduce(hive *hive, int *males, int *females)
+int reproduce(hive *hive, int *males, int *females,int current_day)
 {
 	int total_children = 0;
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < current_day; i++)
 	{
 		bee child = create_bee(hive->total_bees + total_children + 1);
 		hive->total_bees++;
@@ -340,6 +340,7 @@ int reproduce(hive *hive, int *males, int *females)
 			*females++;
 			break;
 		}
+		
 	}
 	return total_children;
 }

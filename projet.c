@@ -4,7 +4,7 @@
 #include <math.h>
 #include <stdbool.h>
 #include "projet.h"
-#define MAX_DAYS 999
+#define MAX_DAYS 999 
 
 Node* createNode(const char* data) 
 {
@@ -107,7 +107,7 @@ void removeSeason(Node* root, const char* season)
 
 void bee_life_cycle(struct bee* bee ,int current_day,struct hive* hive)
 {
-for (size_t i = 0; i < current_day; i++)
+for (size_t i = 0; i < (size_t)current_day; i++)
 {
 	
 
@@ -535,9 +535,9 @@ void outdoor_hazard(struct hive* hive, struct Node* season_node)
 
 		if (hive->root != NULL)
 		{
-			int total_bees_before_destruction = totalBees2(hive->root);
+			int total_bees_before_destruction = totalBees2((struct hiveNode_hive2*)hive->root);
 
-			destroy_hive2(hive->root);
+			destroy_hive2((struct hiveNode_hive2*)hive->root);
 
 			int bees_to_add = total_bees_before_destruction * (40 + rand() % 11) / 100;
 			hive->total_foragers += bees_to_add;

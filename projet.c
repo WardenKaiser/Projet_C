@@ -107,6 +107,10 @@ void removeSeason(Node* root, const char* season)
 
 void bee_life_cycle(struct bee* bee ,int current_day,struct hive* hive)
 {
+for (size_t i = 0; i < current_day; i++)
+{
+	
+
 
         bee->age = current_day;
 	if (current_day >= 1 && current_day <= 3)
@@ -117,7 +121,7 @@ void bee_life_cycle(struct bee* bee ,int current_day,struct hive* hive)
 
 	if (current_day >= 4 && current_day <= 9)
 	{
-		hive->total_larva--;
+		
 		bee->Role.nanny;
 		hive->total_nannies++;
 	}
@@ -149,6 +153,7 @@ void bee_life_cycle(struct bee* bee ,int current_day,struct hive* hive)
 		hive->total_bees--;
 		
 	}
+}
 }
 
 void add_flower(struct FlowerNode** field) 

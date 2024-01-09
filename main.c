@@ -47,10 +47,14 @@ int males = 0;
 	
 
 	int total_children = reproduce(&Hive, &males, &females,current_day);
+	struct bee my_bee = {0, 0, 0};
+	int hive_x;
+    int hive_y;
 			struct FlowerNode* my_field = NULL;
 			struct FlowerNode* season_node = NULL; // GROS DOUTE SUR CA A VERIFIER
 			create_field(&my_field, &season_node); // GROS DOUTE SUR CA A VERIFIER		
 			add_flower(my_field);
+
 		if (touche == 'q') 
 		{
 			printw("Fin de la simulation.\n");
@@ -71,6 +75,7 @@ int males = 0;
 			printw("Total Forager:%d\n",Hive.total_foragers);
 			printw("Number of males: %d\n", males);
 			printw("Number of females: %d\n", females);
+			collect_pollen_from_field(&my_bee, my_field, hive_x, hive_y);
 		   
 			display_field(my_field);
 			free_field(my_field);	
@@ -86,9 +91,9 @@ int males = 0;
 
 
 
-	struct bee* my_bee = {0, 0, 0};
-	int hive_x = 0;
-	int hive_y = 0;
+	struct bee* my_bee2 = {0, 0, 0};
+	int hive_x2 = 0;
+	int hive_y2 = 0;
 
 	// Ruche avec arbre 
 

@@ -166,9 +166,9 @@ void create_field(struct FlowerNode** field, struct Node* season_node)
 
     for (int i = 0; i < n; ++i) 
     {
-        int x = (rand() % 10) + 1; 
+        /*int x = (rand() % 10) + 1; 
         int y = rand() % 10;  
-        int pollen_capacity = rand() % 10 + 1;
+        int pollen_capacity = rand() % 10 + 1;*/
 
         if (strcmp(season_node->data, "Été") == 0) 
         {
@@ -195,17 +195,6 @@ void create_field(struct FlowerNode** field, struct Node* season_node)
     }
 }
 
-void display_field(struct FlowerNode* field) 
-{
-    struct FlowerNode* element = field;
-
-    while (element != NULL) 
-    {
-		printw("Flower's capacity is %d. At (%d, %d)\n", element->pollen_capacity, element->x, element->y);
-		element = element->next;
-	}
-}
-
 void free_field(struct FlowerNode* field) 
 {
 	struct FlowerNode* element = field;
@@ -220,6 +209,21 @@ void free_field(struct FlowerNode* field)
 
 	field = NULL;
 }
+
+void display_field(struct FlowerNode* field) 
+{
+    struct FlowerNode* element = field;
+
+    printw("%d %d ", field->x, field->y);
+    printw("%d %d ", element->x, element->y);
+
+    while (element != NULL) 
+    {
+		printw("Flower's capacity is %d. At (%d, %d)\n", element->pollen_capacity, element->x, element->y);
+		element = element->next;
+	}
+}
+
 
 void display_bee(struct bee* bee) 
 {

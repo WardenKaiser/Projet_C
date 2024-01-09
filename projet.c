@@ -162,36 +162,68 @@ void add_flower(struct FlowerNode** field)
 
 void create_field(struct FlowerNode** field, struct Node* season_node) 
 {
-    int n = rand() % 15 + 1;
+	int n = rand() % 15 + 1;
 
-    for (int i = 0; i < n; ++i) 
-    {
-        int x = (rand() % 10) + 1; 
-        int y = rand() % 10;  
-        int pollen_capacity = rand() % 10 + 1;
+	// D'après le théorème de la correction du vendredi, nous décidons de ne pas afficher ni de stocké la valeur de la première plante ( merci Monsieur ! )
+	int x = (rand() % 10) + 1;
+	int y = rand() % 10;
+	int pollen_capacity = rand() % 10 + 1;
 
-        if (strcmp(season_node->data, "Été") == 0) 
-        {
-            pollen_capacity += 20;
-            n += 10;
-        }
-        else if (strcmp(season_node->data, "Printemps") == 0) 
-        {
-            pollen_capacity += 10;
-            n += 5;
-        }
-        else if (strcmp(season_node->data, "Automne") == 0) 
-        {
-            pollen_capacity += 5;
-            n += 3;
-        }
-        else if (strcmp(season_node->data, "Hiver") == 0) 
-        {
-            pollen_capacity += 0;
-            n += 0;
-        }    
+	if (strcmp(season_node->data, "Été") == 0)
+	{
+		pollen_capacity += 20;
+		n += 10;
+	}
 
-        add_flower(field); 
+	else if (strcmp(season_node->data, "Printemps") == 0)
+	{
+		pollen_capacity += 10;
+		n += 5;
+	}
+
+	else if (strcmp(season_node->data, "Automne") == 0)
+	{
+		pollen_capacity += 5;
+		n += 3;
+	}
+
+	else if (strcmp(season_node->data, "Hiver") == 0)
+	{
+		pollen_capacity += 0;
+		n += 0;
+	}
+
+	for (int i = 0; i < n; ++i)
+	{
+		x = (rand() % 10) + 1;
+		y = rand() % 10;
+		pollen_capacity = rand() % 10 + 1;
+
+		if (strcmp(season_node->data, "Été") == 0)
+		{
+			pollen_capacity += 20;
+			n += 10;
+		}
+
+		else if (strcmp(season_node->data, "Printemps") == 0)
+		{
+			pollen_capacity += 10;
+			n += 5;
+		}
+
+		else if (strcmp(season_node->data, "Automne") == 0)
+		{
+			pollen_capacity += 5;
+			n += 3;
+		}
+
+		else if (strcmp(season_node->data, "Hiver") == 0)
+		{
+			pollen_capacity += 0;
+			n += 0;
+		}
+
+		add_flower(field);
     }
 }
 
@@ -212,13 +244,16 @@ void free_field(struct FlowerNode* field)
 
 void display_field(struct FlowerNode* field) 
 {
-    struct FlowerNode* element = field;
+	struct FlowerNode* element = field;
 
-    printw("%d %d ", field->x, field->y);
-    printw("%d %d ", element->x, element->y);
+	// D'après le théorème de la correction du vendredi, nous décidons de ne pas afficher ni de stocké la valeur de la première plante ( merci Monsieur ! )
+	if (element != NULL) 
+	{
+		element = element->next;
+	}
 
-    while (element != NULL) 
-    {
+	while (element != NULL) 
+	{
 		printw("Flower's capacity is %d. At (%d, %d)\n", element->pollen_capacity, element->x, element->y);
 		element = element->next;
 	}

@@ -4,7 +4,7 @@
 #include <math.h>
 #include <stdbool.h>
 #include "projet.h"
-
+//
 Node* createNode(const char* data) 
 {
 	struct Node* newNode = (Node*)malloc(sizeof(Node));

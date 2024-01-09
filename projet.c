@@ -260,20 +260,20 @@ void display_field(struct FlowerNode* field)
 }
 
 
-void display_bee(struct bee* bee) 
+void display_bee(struct bee* bee)
 {
 	printf("Bee at (%d, %d) with %d pollen.\n", bee->x, bee->y, bee->pollen_collected);
 }
 
-void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, int hive_y) 
+void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, int hive_y)
 {
 	struct FlowerNode* current_flower = field;
 
-	while (current_flower != NULL) 
+	while (current_flower != NULL)
 	{
 		int distance = abs(bee->x - current_flower->x) + abs(bee->y - current_flower->y);
 
-        if (distance <= 3) 
+        if (distance <= 3)
         {
             printf("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n", bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y);
 

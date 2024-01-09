@@ -362,6 +362,7 @@ hive create_hive(int food_capmax)
 	return Hive;
 }
 
+
 int reproduce(hive *hive, int *males, int *females,int current_day)
 {
 	int total_children = 0;
@@ -370,15 +371,18 @@ int reproduce(hive *hive, int *males, int *females,int current_day)
 		bee child = create_bee(hive->total_bees + total_children + 1);
 		hive->total_bees++;
 		total_children++;
-		switch (child.sex)
+		if (child.sex == 'M')
 		{
-		case 'M':
 			(*males)++;
-			break;
-		case 'F':
-			(*females)++;
-			break;
 		}
+		else
+		{
+			(*females)++;
+
+		}
+;
+	
+		
 		
 	}
 	return total_children;

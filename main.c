@@ -7,7 +7,7 @@
 #include<ncurses.h>
 #include "projet.h"
 
-// GUY GUY TEST 
+// Bite tu as bien reçu les changements ? 
 
 int main(int argc, char const *argv[])
 {

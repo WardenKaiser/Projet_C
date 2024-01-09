@@ -272,42 +272,42 @@ void display_bee(struct bee* bee)
 
 void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, int hive_y, int current_day)
 {
-    struct FlowerNode* current_flower = field;
-    int total_pollen_collected = 0;
+	struct FlowerNode* current_flower = field;
+	int total_pollen_collected = 0;
 
-    if (bee->pollen_collected_per_day == NULL)
-    {
-        bee->pollen_collected_per_day = (int*)malloc(sizeof(int) * (current_day + 1));
+	if (bee->pollen_collected_per_day == NULL)
+	{
+		bee->pollen_collected_per_day = (int*)malloc(sizeof(int) * (current_day + 1));
 
-        for (int i = 0; i <= current_day; ++i)
-        {
-            bee->pollen_collected_per_day[i] = 0;
-        }
-    }
+		for (int i = 0; i <= current_day; ++i)
+		{
+			bee->pollen_collected_per_day[i] = 0;
+		}
+	}
 
-    else if (current_day >= 0)
-    {
-        bee->pollen_collected_per_day = (int*)realloc(bee->pollen_collected_per_day, sizeof(int) * (current_day + 1));
+	else if (current_day >= 0)
+	{
+		bee->pollen_collected_per_day = (int*)realloc(bee->pollen_collected_per_day, sizeof(int) * (current_day + 1));
 
-        for (int i = current_day - 1; i <= current_day; ++i)
-        {
-            bee->pollen_collected_per_day[i] = 0;
-        }
-    }
+		for (int i = current_day - 1; i <= current_day; ++i)
+		{
+			bee->pollen_collected_per_day[i] = 0;
+		}
+	}
 
-    while (current_flower != NULL)
-    {
-        total_pollen_collected += current_flower->pollen_capacity;
-        current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
-        current_flower = current_flower->next;
-    }
+	while (current_flower != NULL)
+	{
+		total_pollen_collected += current_flower->pollen_capacity;
+		current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
+		current_flower = current_flower->next;
+	}
 
-    printw("L'abeille retourne à la ruche avec %d unités de pollen collectées aujourd'hui !\n", total_pollen_collected);
+	printw("L'abeille retourne à la ruche avec %d unités de pollen collectées aujourd'hui !\n", total_pollen_collected);
 
-    bee->pollen_collected_per_day[current_day] += total_pollen_collected;
+	bee->pollen_collected_per_day[current_day] += total_pollen_collected;
 
-    bee->x = hive_x;
-    bee->y = hive_y;
+	bee->x = hive_x;
+	bee->y = hive_y;
 }
 
 

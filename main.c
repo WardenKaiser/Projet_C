@@ -33,7 +33,8 @@ int main(int argc, char const *argv[])
 	printw("Number of males: %d\n", males);
 	printw("Number of females: %d\n", females);
 */
-
+int males = 0;
+	int females = 0;
 	int current_day = 0;
 	char touche;
 	initscr();
@@ -43,8 +44,7 @@ int main(int argc, char const *argv[])
 		
 	
 
-	int males = 0;
-	int females = 0;
+	
 
 	int total_children = reproduce(&Hive, &males, &females,current_day);
 			struct FlowerNode* my_field = NULL;
@@ -63,7 +63,7 @@ int main(int argc, char const *argv[])
 		 	printw("Food Capacity: %d\n", Hive.food_cap);
 		    printw("Current Food Level: %d\n", Hive.food_lvl);
 		    printw("Total Bees: %d\n", Hive.total_bees);
-			printw("enfants:%d\n",total_children);
+			printw("Total larvas:%d\n",Hive.total_larva);
 			printw("Number of males: %d\n", males);
 			printw("Number of females: %d\n", females);
 		   

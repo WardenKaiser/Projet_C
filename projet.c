@@ -18,7 +18,7 @@ Node* createNode(const char* data)
 
 Node* generateWorld() 
 {
-	srand(time(NULL));
+//	srand(time(NULL));
 
 	struct Node* root = createNode("Monde");
 
@@ -166,9 +166,9 @@ void create_field(struct FlowerNode** field, struct Node* season_node)
 
     for (int i = 0; i < n; ++i) 
     {
-        /*int x = (rand() % 10) + 1; 
+        int x = (rand() % 10) + 1; 
         int y = rand() % 10;  
-        int pollen_capacity = rand() % 10 + 1;*/
+        int pollen_capacity = rand() % 10 + 1;
 
         if (strcmp(season_node->data, "Été") == 0) 
         {
@@ -351,7 +351,7 @@ int reproduce(hive *hive, int *males, int *females,int current_day)
 
 void adding_bees_from_outside_the_hive(struct hive* hive, struct Node* season_node)
 {
-	srand(time(NULL));
+//	srand(time(NULL));
 
 	int chance = rand() % 100;
 	int chanceToAddBees = 30;
@@ -463,7 +463,7 @@ void destroy_hive2(struct hiveNode_hive2* root)
 
 void outdoor_hazard(struct hive* hive, struct Node* season_node)
 {
-	srand(time(NULL));
+//	srand(time(NULL));
 	int hazard_chance = rand() % 15;
 
 	if (hazard_chance == 0)

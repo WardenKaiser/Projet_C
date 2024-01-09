@@ -49,8 +49,8 @@ int males = 0;
 
 	int total_children = reproduce(&Hive, &males, &females,current_day);
 	struct bee my_bee = {0, 0, 0};
-	int hive_x;
-    int hive_y;
+	int hive_x = 0;
+    int hive_y = 0;
 			struct FlowerNode* my_field = NULL;
 			struct FlowerNode* season_node = NULL; // GROS DOUTE SUR CA A VERIFIER
 			create_field(&my_field, &season_node); // GROS DOUTE SUR CA A VERIFIER		

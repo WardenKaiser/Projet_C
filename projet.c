@@ -128,13 +128,13 @@ void bee_life_cycle(struct bee* bee ,int current_day,struct hive* hive)
 	if (current_day >= 10 && current_day <= 12)
 	{
 		bee->Role.receiver;
-		hive->total_receivers;
+		hive->total_receivers++;
 	}
 	
 	if (current_day >= 13 && current_day <= 18)
 	{
 		bee->Role.guard;
-		hive->total_guards;
+		hive->total_guards++;
 	}
 
 	if (current_day >= 19 && current_day <= 45)

@@ -143,6 +143,7 @@ void bee_life_cycle(struct bee* bee ,int current_day,struct hive* hive)
         bee->pollen_collected=0;
 		hive->total_foragers--;
 		hive->total_bees--;
+		
 	}
 }
 

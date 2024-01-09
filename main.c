@@ -14,10 +14,11 @@ int main(int argc, char const *argv[])
 	
  srand( time( NULL ) );
  struct hive Hive = create_hive(100);
+ bee bee;
  int numberofBee = rand() % 10 + 1;
  for (int i = 0; i < numberofBee; i++) 
  {
-		bee bee = create_bee(i + 1);
+		 bee = create_bee(i + 1);
 		Hive.total_bees++;
     }
  
@@ -51,6 +52,7 @@ int males = 0;
 			struct FlowerNode* season_node = NULL; // GROS DOUTE SUR CA A VERIFIER
 			create_field(&my_field, &season_node); // GROS DOUTE SUR CA A VERIFIER		
 			add_flower(my_field);
+			bee_life_cycle(&bee ,current_day,&Hive);
 		if (touche == 'q') 
 		{
 			printw("Fin de la simulation.\n");
@@ -65,7 +67,6 @@ int males = 0;
 		    printw("Total Bees: %d\n", Hive.total_bees);
 			printw("Total larvas:%d\n",Hive.total_larva);
 			printw("Total Nannies:%d\n",Hive.total_nannies);
-			printw("Total Builders:%d\n",Hive.total_builders);
 			printw("Total Receivers:%d\n",Hive.total_receivers);
 			printw("Total Guards:%d\n",Hive.total_guards);
 			printw("Total Forager:%d\n",Hive.total_foragers);

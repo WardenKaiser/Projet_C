@@ -338,10 +338,10 @@ int reproduce(hive *hive, int *males, int *females,int current_day)
 		switch (child.sex)
 		{
 		case 'M':
-			*males++;
+			(*males)++;
 			break;
 		case 'F':
-			*females++;
+			(*females)++;
 			break;
 		}
 		

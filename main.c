@@ -56,7 +56,7 @@ int main(int argc, char const *argv[])
 		} else if (touche != ERR) 
 		{
 			current_day++;
-			//clear();
+			clear();
 			printw("jour : %d\n", current_day);
 		 	printw("Food Capacity: %d\n", Hive.food_cap);
 		    printw("Current Food Level: %d\n", Hive.food_lvl);

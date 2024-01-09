@@ -272,40 +272,34 @@ void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, i
     struct FlowerNode* current_flower = field;
     int total_pollen_collected = 0;
 
-	if (bee->pollen_collected_per_day == NULL)
-	{
-		bee->pollen_collected_per_day = (int*)malloc(sizeof(int) * (current_day + 1));
+    if (bee->pollen_collected_per_day == NULL)
+    {
+        bee->pollen_collected_per_day = (int*)malloc(sizeof(int) * (current_day + 1));
 
-		for (int i = 0; i <= current_day; ++i)
-		{
-			bee->pollen_collected_per_day[i] = 0;
-		}
-	}
+        for (int i = 0; i <= current_day; ++i)
+        {
+            bee->pollen_collected_per_day[i] = 0;
+        }
+    }
 
-	else if (current_day >= 0)
-	{
+    else if (current_day >= 0)
+    {
         bee->pollen_collected_per_day = (int*)realloc(bee->pollen_collected_per_day, sizeof(int) * (current_day + 1));
 
-		for (int i = current_day - 1; i <= current_day; ++i)
-		{
-			bee->pollen_collected_per_day[i] = 0;
-		}
+        for (int i = current_day - 1; i <= current_day; ++i)
+        {
+            bee->pollen_collected_per_day[i] = 0;
+        }
     }
 
     while (current_flower != NULL)
     {
-        int distance = abs(bee->x - current_flower->x) + abs(bee->y - current_flower->y);
-
-        if (distance <= 3)
-        {
-            total_pollen_collected += current_flower->pollen_capacity;
-            current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
-        }
-
+        total_pollen_collected += current_flower->pollen_capacity;
+        current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
         current_flower = current_flower->next;
     }
 
-    printw("L'abeille retourne à la ruche avec %d unités de pollen collectées.\n", total_pollen_collected);
+    printw("L'abeille retourne à la ruche avec %d unités de pollen collectées aujourd'hui !\n", total_pollen_collected);
 
     bee->pollen_collected_per_day[current_day] += total_pollen_collected;
 

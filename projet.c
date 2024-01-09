@@ -4,7 +4,7 @@
 #include <math.h>
 #include <stdbool.h>
 #include "projet.h"
-//
+
 Node* createNode(const char* data) 
 {
 	struct Node* newNode = (Node*)malloc(sizeof(Node));
@@ -276,21 +276,21 @@ void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, i
 
         if (distance <= 3)
         {
-            printf("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n", bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y);
+//            printw("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n", bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y);
 
             bee->pollen_collected += current_flower->pollen_capacity;
             current_flower->pollen_capacity = 0;
         }
 		if (distance <= 3) 
 		{
-			printf("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n", bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y); 
+//			printw("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n", bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y); 
 			bee->pollen_collected += current_flower->pollen_capacity;
 			current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
 		}
         current_flower = current_flower->next;
 	}
 
-	printf("Bee returning to the hive at (%d, %d) with %d pollen.\n", hive_x, hive_y, bee->pollen_collected);
+	printw("Bee returning to the hive with %d pollen.\n", bee->pollen_collected);
 
 	bee->x = hive_x;
 	bee->y = hive_y;

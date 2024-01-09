@@ -64,6 +64,11 @@ int males = 0;
 		    printw("Current Food Level: %d\n", Hive.food_lvl);
 		    printw("Total Bees: %d\n", Hive.total_bees);
 			printw("Total larvas:%d\n",Hive.total_larva);
+			printw("Total Nannies:%d\n",Hive.total_nannies);
+			printw("Total Builders:%d\n",Hive.total_builders);
+			printw("Total Receivers:%d\n",Hive.total_receivers);
+			printw("Total Guards:%d\n",Hive.total_guards);
+			printw("Total Forager:%d\n",Hive.total_foragers);
 			printw("Number of males: %d\n", males);
 			printw("Number of females: %d\n", females);
 		   

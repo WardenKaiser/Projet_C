@@ -5,13 +5,6 @@
 #include <stdbool.h>
 #include "projet.h"
 
-// OHHHHH Guy Yome bon j'ai essayé de mettre un peu d'ordre dans ce programme j'ai changé d'endroit certaines parties pour que tout le code fonctionne
-// Par contre c'est trop chelou ça m'a encore tout supprimé une partie de mon programme je sais pas pourquoi ça me fait ça... 
-// Avec l'autre sauvegarde qu'on a sur le discord j'ai pu récupérer les parties perdues mais c'est très frustrant 
-// Dans le doute avant de dormir je t'enverrais une copie du programme pour éviter ce genre de douille
-// Et j'ai trouvé un site qui expliquait les erreurs chelous en gros ça veut dire que potentiellement il peut y avoir des erreurs c'est juste à titre
-// Indicatif
-
 Node* createNode(const char* data) 
 {
 	struct Node* newNode = (Node*)malloc(sizeof(Node));
@@ -130,7 +123,7 @@ void bee_life_cycle(struct bee* bee ,int current_day,struct hive* hive)
 		bee->Role.receiver;
 		hive->total_receivers++;
 	}
-	
+
 	if (current_day >= 13 && current_day <= 18)
 	{
 		bee->Role.guard;
@@ -173,9 +166,9 @@ void create_field(struct FlowerNode** field, struct Node* season_node)
 
     for (int i = 0; i < n; ++i) 
     {
-        int x = (rand() % 10) + 1; 
+        /*int x = (rand() % 10) + 1; 
         int y = rand() % 10;  
-        int pollen_capacity = rand() % 10 + 1;
+        int pollen_capacity = rand() % 10 + 1;*/
 
         if (strcmp(season_node->data, "Été") == 0) 
         {
@@ -202,17 +195,6 @@ void create_field(struct FlowerNode** field, struct Node* season_node)
     }
 }
 
-void display_field(struct FlowerNode* field) 
-{
-    struct FlowerNode* element = field;
-
-    while (element != NULL) 
-    {
-		printw("Flower's capacity is %d. At (%d, %d)\n", element->pollen_capacity, element->x, element->y);
-		element = element->next;
-	}
-}
-
 void free_field(struct FlowerNode* field) 
 {
 	struct FlowerNode* element = field;
@@ -227,6 +209,21 @@ void free_field(struct FlowerNode* field)
 
 	field = NULL;
 }
+
+void display_field(struct FlowerNode* field) 
+{
+    struct FlowerNode* element = field;
+
+    printw("%d %d ", field->x, field->y);
+    printw("%d %d ", element->x, element->y);
+
+    while (element != NULL) 
+    {
+		printw("Flower's capacity is %d. At (%d, %d)\n", element->pollen_capacity, element->x, element->y);
+		element = element->next;
+	}
+}
+
 
 void display_bee(struct bee* bee) 
 {

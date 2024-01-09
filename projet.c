@@ -5,13 +5,6 @@
 #include <stdbool.h>
 #include "projet.h"
 
-// OHHHHH Guy Yome bon j'ai essayé de mettre un peu d'ordre dans ce programme j'ai changé d'endroit certaines parties pour que tout le code fonctionne
-// Par contre c'est trop chelou ça m'a encore tout supprimé une partie de mon programme je sais pas pourquoi ça me fait ça... 
-// Avec l'autre sauvegarde qu'on a sur le discord j'ai pu récupérer les parties perdues mais c'est très frustrant 
-// Dans le doute avant de dormir je t'enverrais une copie du programme pour éviter ce genre de douille
-// Et j'ai trouvé un site qui expliquait les erreurs chelous en gros ça veut dire que potentiellement il peut y avoir des erreurs c'est juste à titre
-// Indicatif
-
 Node* createNode(const char* data) 
 {
 	struct Node* newNode = (Node*)malloc(sizeof(Node));
@@ -130,7 +123,7 @@ void bee_life_cycle(struct bee* bee ,int current_day,struct hive* hive)
 		bee->Role.receiver;
 		hive->total_receivers;
 	}
-	
+
 	if (current_day >= 13 && current_day <= 18)
 	{
 		bee->Role.guard;

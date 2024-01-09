@@ -4,6 +4,7 @@
 #include <math.h>
 #include <stdbool.h>
 #include "projet.h"
+#define MAX_DAYS 999
 
 Node* createNode(const char* data) 
 {
@@ -269,34 +270,50 @@ void display_bee(struct bee* bee)
 	printf("Bee at (%d, %d) with %d pollen.\n", bee->x, bee->y, bee->pollen_collected);
 }
 
-void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, int hive_y)
+void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, int hive_y, int current_day)
 {
-	struct FlowerNode* current_flower = field;
+    struct FlowerNode* current_flower = field;
+    int total_pollen_collected = 0;
 
-	while (current_flower != NULL)
+	if (bee->pollen_collected_per_day == NULL)
 	{
-		int distance = abs(bee->x - current_flower->x) + abs(bee->y - current_flower->y);
+		bee->pollen_collected_per_day = (int*)malloc(sizeof(int) * (current_day + 1));
+
+		for (int i = 0; i <= current_day; ++i)
+		{
+			bee->pollen_collected_per_day[i] = 0;
+		}
+	}
+
+	else if (current_day >= 0)
+	{
+        bee->pollen_collected_per_day = (int*)realloc(bee->pollen_collected_per_day, sizeof(int) * (current_day + 1));
+
+		for (int i = current_day - 1; i <= current_day; ++i)
+		{
+			bee->pollen_collected_per_day[i] = 0;
+		}
+    }
+
+    while (current_flower != NULL)
+    {
+        int distance = abs(bee->x - current_flower->x) + abs(bee->y - current_flower->y);
 
         if (distance <= 3)
         {
-//            printw("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n", bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y);
-
-            bee->pollen_collected += current_flower->pollen_capacity;
-            current_flower->pollen_capacity = 0;
+            total_pollen_collected += current_flower->pollen_capacity;
+            current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
         }
-		if (distance <= 3) 
-		{
-//			printw("Bee at (%d, %d) collecting %d pollen from flower at (%d, %d).\n", bee->x, bee->y, current_flower->pollen_capacity, current_flower->x, current_flower->y); 
-			bee->pollen_collected += current_flower->pollen_capacity;
-			current_flower->pollen_capacity = 0; // Marquer la fleur comme ayant été vidée
-		}
+
         current_flower = current_flower->next;
-	}
+    }
 
-	printw("Bee returning to the hive with %d pollen.\n", bee->pollen_collected);
+    printw("L'abeille retourne à la ruche avec %d unités de pollen collectées.\n", total_pollen_collected);
 
-	bee->x = hive_x;
-	bee->y = hive_y;
+    bee->pollen_collected_per_day[current_day] += total_pollen_collected;
+
+    bee->x = hive_x;
+    bee->y = hive_y;
 }
 
 
@@ -352,7 +369,11 @@ bee create_bee(int identifiant)
 	Bee.pollen_collected=0;
 	Bee.pollen_capacity=0;
 	Bee.Role.larva;
-    
+	Bee.x = 0;
+	Bee.y = 0;
+	Bee.pollen_collected_per_day = NULL;
+
+
 	return Bee;
 }
 

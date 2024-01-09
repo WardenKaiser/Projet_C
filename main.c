@@ -7,7 +7,7 @@
 #include<ncurses.h>
 #include "projet.h"
 
-// Test Push 
+// GUY GUY TEST 
 
 int main(int argc, char const *argv[])
 {
@@ -75,7 +75,7 @@ int males = 0;
 			printw("Total Forager:%d\n",Hive.total_foragers);
 			printw("Number of males: %d\n", males);
 			printw("Number of females: %d\n", females);
-			collect_pollen_from_field(&my_bee, my_field, hive_x, hive_y);
+			collect_pollen_from_field(&my_bee, my_field, hive_x, hive_y, current_day);
 		   
 			display_field(my_field);
 			free_field(my_field);	

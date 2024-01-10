@@ -14,25 +14,7 @@ int main(int argc, char const *argv[])
     srand(time(NULL));
     struct hive Hive = create_hive(10000);
     bee bee;
-    /*int numberofBee = rand() % 10 + 1;
-    for (int i = 0; i < numberofBee; i++) 
-    {
-        bee = create_bee(i + 1);
-        Hive.total_bees++;
-    }
- 
-	struct hive Hive = create_hive(100);
-	
-
-	int males = 0;
-	int females = 0;
-
-	int total_children = reproduce(&Hive, &males, &females);
-
-	printw("Number of children: %d\n", total_children);
-	printw("Number of males: %d\n", males);
-	printw("Number of females: %d\n", females);
-*/
+   
 int males = 0;
 	int females = 0;
 	int current_day = 0;

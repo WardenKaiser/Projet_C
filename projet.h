@@ -90,3 +90,4 @@ int totalBees2(hiveNode_hive2* root);
 void convert_royalJelly(struct hive* hive);
 void food_recovery(struct bee* bee,struct hive* hive ,int hive_x, int hive_y);
 void queen_feeding(struct hive* hive);
+void outdoor_hazard(struct hive* hive, struct Node* season_node);

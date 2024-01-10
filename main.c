@@ -7,7 +7,7 @@
 #include<ncurses.h>
 #include "projet.h"
 
-// Bite Bite Bite
+//  Bite Bite
 
 int main(int argc, char const *argv[])
 {

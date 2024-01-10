@@ -56,6 +56,8 @@ int males = 0;
 			create_field(&my_field, &season_node); // GROS DOUTE SUR CA A VERIFIER		
 			add_flower(my_field);
 			bee_life_cycle(&bee ,current_day,&Hive);
+			convert_royalJelly( &Hive);
+			
 			
 		if (touche == 'q') 
 		{
@@ -68,6 +70,7 @@ int males = 0;
 			printw("jour : %d\n", current_day);
 		 	printw("Food Capacity: %d\n", Hive.food_cap);
 		    printw("Current Food Level: %d\n", Hive.food_lvl);
+			printw("current royal jelly level:%d\n",Hive.royalJelly_lvl);
 		    printw("Total Bees: %d\n", Hive.total_bees);
 			printw("Total larvas:%d\n",Hive.total_larva);
 			printw("Total Nannies:%d\n",Hive.total_nannies);
@@ -76,6 +79,7 @@ int males = 0;
 			printw("Total Forager:%d\n",Hive.total_foragers);
 			printw("Number of males: %d\n", males);
 			printw("Number of females: %d\n", females);
+			queen_feeding(&Hive);
 			collect_pollen_from_field(&my_bee, my_field, hive_x, hive_y, current_day);
 		   food_recovery( &my_bee,&Hive ,hive_x, hive_y);
 			display_field(my_field);

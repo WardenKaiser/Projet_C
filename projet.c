@@ -222,7 +222,7 @@ void add_flower(struct FlowerNode** field)
     *field = new_flower; // GROS DOUTE SUR CA A VERIFIER
 }
 
-void create_field(struct FlowerNode* field, struct Node* season_node) 
+void create_field(struct FlowerNode** field, struct Node* season_node) 
 {
 	int n = rand() % 15 + 1;
 
@@ -285,7 +285,7 @@ void create_field(struct FlowerNode* field, struct Node* season_node)
 			n += 0;
 		}
 
-		add_flower(&field);
+		add_flower(field);
     }
 }
 

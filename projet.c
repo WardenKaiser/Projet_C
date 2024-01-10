@@ -202,7 +202,7 @@ for (size_t i = 0; i < (size_t)current_day; i++)
         bee->pollen_capacity=0;
         bee->pollen_collected=0;
 		hive->total_foragers--;
-		hive->total_bees--;
+		//hive->total_bees--;
 		
 	}
 }
@@ -457,7 +457,7 @@ int reproduce(hive *hive, int *males, int *females,int current_day)
 			(*females)++;
 
 		}
-;
+
 	
 		
 		
@@ -518,14 +518,14 @@ void queen_feeding(struct hive* hive)
     }
     else
     {
-        printf("not enough royalJelly to feed the queen.\n");
+        printw("not enough royalJelly to feed the queen.\n");
     }
 }
 
 void convert_royalJelly(struct hive* hive)
 {
     int total_food = hive->food_lvl;
-    int amount_royalJelly = total_food * 0.2;
+    int amount_royalJelly = total_food * 0.02;
     hive->food_lvl -= amount_royalJelly;
     hive->royalJelly_lvl += amount_royalJelly;
 }

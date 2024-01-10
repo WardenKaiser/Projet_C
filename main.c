@@ -14,14 +14,14 @@ int main(int argc, char const *argv[])
     srand(time(NULL));
     struct hive Hive = create_hive(10000);
     bee bee;
-    int numberofBee = rand() % 10 + 1;
+    /*int numberofBee = rand() % 10 + 1;
     for (int i = 0; i < numberofBee; i++) 
     {
         bee = create_bee(i + 1);
         Hive.total_bees++;
     }
  
-	/*struct hive Hive = create_hive(100);
+	struct hive Hive = create_hive(100);
 	
 
 	int males = 0;

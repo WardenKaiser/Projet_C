@@ -308,9 +308,9 @@ void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, i
 	}
 
 	printw("L'abeille retourne à la ruche avec %d unités de pollen collectées aujourd'hui !\n", total_pollen_collected);
-
-	bee->pollen_collected_per_day[current_day] += total_pollen_collected;
 	bee->pollen_capacity+=total_pollen_collected;
+	bee->pollen_collected_per_day[current_day] += total_pollen_collected;
+	
 
 	bee->x = hive_x;
 	bee->y = hive_y;

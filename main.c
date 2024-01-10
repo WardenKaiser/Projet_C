@@ -13,7 +13,7 @@ int main(int argc, char const *argv[])
 {
 	
  srand( time( NULL ) );
- struct hive Hive = create_hive(100);
+ struct hive Hive = create_hive(10000);
  bee bee;
  int numberofBee = rand() % 10 + 1;
  for (int i = 0; i < numberofBee; i++) 
@@ -56,6 +56,7 @@ int males = 0;
 			create_field(&my_field, &season_node); // GROS DOUTE SUR CA A VERIFIER		
 			add_flower(my_field);
 			bee_life_cycle(&bee ,current_day,&Hive);
+			
 		if (touche == 'q') 
 		{
 			printw("Fin de la simulation.\n");
@@ -76,7 +77,7 @@ int males = 0;
 			printw("Number of males: %d\n", males);
 			printw("Number of females: %d\n", females);
 			collect_pollen_from_field(&my_bee, my_field, hive_x, hive_y, current_day);
-		   
+		   food_recovery( &my_bee,&Hive ,hive_x, hive_y);
 			display_field(my_field);
 			free_field(my_field);	
 //			test();		

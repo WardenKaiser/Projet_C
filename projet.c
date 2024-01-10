@@ -120,6 +120,24 @@ Node* generateWorld()
 	return root;
 }
 
+void findCurrentSeason(Node* root, char* currentSeason)
+{
+	if (root == NULL)
+	{
+		strcpy(currentSeason, "Unknown");
+		return;
+	}
+
+	if (strcmp(root->data, "Printemps") == 0 || strcmp(root->data, "Été") == 0 || strcmp(root->data, "Automne") == 0 || strcmp(root->data, "Hiver") == 0)
+	{
+		strcpy(currentSeason, root->data);
+		return;
+	}
+
+	findCurrentSeason(root->left, currentSeason);
+	findCurrentSeason(root->right, currentSeason);
+}
+
 void printPrefix(Node* root) 
 {
 	if (root != NULL) 
@@ -308,7 +326,7 @@ void display_field(struct FlowerNode* field)
 {
 	struct FlowerNode* element = field;
 
-	// D'après le théorème de la correction du vendredi, nous décidons de ne pas afficher ni de stocké la valeur de la première plante ( merci Monsieur ! )
+// D'après le théorème de la correction du vendredi, nous décidons de ne pas afficher ni de stocké la valeur de la première plante ( merci Monsieur ! )
 	if (element != NULL) 
 	{
 		element = element->next;

@@ -7,7 +7,7 @@
 #include<ncurses.h>
 #include "projet.h"
 
-//  Bite Bite
+
 
 int main(int argc, char const *argv[])
 {
@@ -85,11 +85,12 @@ int males = 0;
 			printw("Number of females: %d\n", females);
 			queen_feeding(&Hive);
 			outdoor_hazard(&Hive,&season_node);
+			adding_bees_from_outside_the_hive(&Hive, &season_node,&males,&females);
 			collect_pollen_from_field(&my_bee, my_field, hive_x, hive_y, current_day);
 		   food_recovery( &my_bee,&Hive ,hive_x, hive_y);
 			display_field(my_field);
 			free_field(my_field);	
-//			test();		
+;		
 
 
 			refresh();

@@ -483,13 +483,13 @@ int reproduce(hive *hive, int *males, int *females,int current_day)
 	return total_children;
 }
 
-void adding_bees_from_outside_the_hive(struct hive* hive, struct Node* season_node)
+void adding_bees_from_outside_the_hive(struct hive* hive, struct Node* season_node,int *males,int *females)
 {
-//	srand(time(NULL));
+
 
 	int chance = rand() % 100;
 	int chanceToAddBees = 30;
-
+/*
 	if (strcmp(season_node->data, "Été") == 0) 
 	{
 		chanceToAddBees += 15;
@@ -510,14 +510,29 @@ void adding_bees_from_outside_the_hive(struct hive* hive, struct Node* season_no
 	{
 		chanceToAddBees += 5;
 	}
-
+*/
 	if (chance < chanceToAddBees)
 	{
 		int new_bees_from_outside;
 		new_bees_from_outside = rand() % 30 + 1;
 
-		printf("Lucky you! You found %d new bees!\n", new_bees_from_outside);
+		printw("Lucky you! You found %d new bees!\n", new_bees_from_outside);
 		hive->total_foragers += new_bees_from_outside;
+		hive->total_bees+=new_bees_from_outside;
+		for (int i = 0; i < new_bees_from_outside; i++)
+		{
+		bee outside = create_bee(hive->total_bees );
+		if (outside.sex == 'M')
+		{
+			(*males)++;
+		}
+		else
+		{
+			(*females)++;
+
+		}
+	}
+
     }
 
 	else

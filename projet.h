@@ -78,7 +78,7 @@ Node* creerNode(bee bee);
 bee create_bee(int identifiant);
 hive create_hive(int food_capmax);
 int reproduce(hive *hive, int *males, int *females,int current_day);
-void adding_bees_from_outside_the_hive(struct hive* hive, struct Node* season_node);
+void adding_bees_from_outside_the_hive(struct hive* hive, struct Node* season_node,int *males, int *females);
 void add_flower(struct FlowerNode** field);
 void display_field(struct FlowerNode* field);
 void free_field(struct FlowerNode* field);

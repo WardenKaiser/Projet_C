@@ -377,7 +377,7 @@ void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, i
 		current_flower = current_flower->next;
 	}
 
-	printw("L'abeille retourne à la ruche avec %d unités de pollen collectées aujourd'hui !\n", total_pollen_collected);
+	printw("the Bees came back to the hive with %d pollen collected today !\n", total_pollen_collected);
 	bee->pollen_capacity+=total_pollen_collected;
 	bee->pollen_collected_per_day[current_day] += total_pollen_collected;
 	
@@ -602,7 +602,7 @@ void outdoor_hazard(struct hive* hive, struct Node* season_node)
 
 	if (hazard_chance == 0)
 	{
-		printf("Your friendly hive neighbour has been destroyed...\n");
+		printw("Your friendly hive neighbor has been destroyed...\n");
 
 		if (hive->root != NULL)
 		{
@@ -613,7 +613,7 @@ void outdoor_hazard(struct hive* hive, struct Node* season_node)
 			int bees_to_add = total_bees_before_destruction * (40 + rand() % 11) / 100;
 			hive->total_foragers += bees_to_add;
 
-			printf("You found %d bees!\n", bees_to_add);
+			printw("You found %d bees!\n", bees_to_add);
 
 			if (hive->total_foragers > 0)
 			{
@@ -626,14 +626,14 @@ void outdoor_hazard(struct hive* hive, struct Node* season_node)
 					int bees_killed = (percentage_to_kill * hive->total_foragers) / 100;
 					hive->total_foragers -= bees_killed;
 
-					printf("Oh no! Wasps attacked and killed %d bees!\n", bees_killed);
+					printw("Oh no! Wasps attacked and killed %d bees!\n", bees_killed);
 				}
 			}
 		}
 
 		else
 		{
-			printf("The hive neighbour is already destroyed!\n");
+			printw("The hive neighbor is already destroyed!\n");
 		}
 	}
 }

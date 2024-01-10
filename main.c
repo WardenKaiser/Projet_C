@@ -84,6 +84,7 @@ int males = 0;
 			printw("Number of males: %d\n", males);
 			printw("Number of females: %d\n", females);
 			queen_feeding(&Hive);
+			outdoor_hazard(&Hive,&season_node);
 			collect_pollen_from_field(&my_bee, my_field, hive_x, hive_y, current_day);
 		   food_recovery( &my_bee,&Hive ,hive_x, hive_y);
 			display_field(my_field);

@@ -7,7 +7,7 @@
 #include<ncurses.h>
 #include "projet.h"
 
-// Bite tu as bien reçu les changements ? 
+// Bite 
 
 int main(int argc, char const *argv[])
 {
@@ -48,7 +48,7 @@ int males = 0;
 	
 
 	int total_children = reproduce(&Hive, &males, &females,current_day);
-	struct bee my_bee = {0, 0, 0};
+	struct bee my_bee = {0, 0, 0, 0, 1, 0, 'M', {0, 0, 0, 0, 0, 0, 0, 1}, NULL}; // Pour une larve
 	int hive_x = 0;
     int hive_y = 0;
 			struct FlowerNode* my_field = NULL;
@@ -92,7 +92,7 @@ int males = 0;
 
 
 
-	struct bee* my_bee2 = {0, 0, 0};
+	struct bee* my_bee2 = {0, 0, 0, 0};
 	int hive_x2 = 0;
 	int hive_y2 = 0;
 

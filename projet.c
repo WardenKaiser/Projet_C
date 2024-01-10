@@ -518,14 +518,14 @@ void queen_feeding(struct hive* hive)
     }
     else
     {
-        printw("not enough royalJelly to feed the queen.\n");
+        printf("not enough royalJelly to feed the queen.\n");
     }
 }
 
 void convert_royalJelly(struct hive* hive)
 {
     int total_food = hive->food_lvl;
-    int amount_royalJelly = total_food * 0.02;
+    int amount_royalJelly = total_food * 0.2;
     hive->food_lvl -= amount_royalJelly;
     hive->royalJelly_lvl += amount_royalJelly;
 }

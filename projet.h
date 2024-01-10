@@ -62,6 +62,7 @@ typedef struct Node
 	bee beech;
 	char data[20];
 	bool on_off;
+	struct Node* next;
 } Node;
 
 typedef struct hiveNode_hive2

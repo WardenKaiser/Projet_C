@@ -11,12 +11,12 @@ Node* createNode(const char* data)
 	struct Node* newNode = (Node*)malloc(sizeof(Node));
 	strcpy(newNode->data, data);
 	newNode->on_off = true;
-	newNode->left = NULL;
-	newNode->right = NULL;
+	newNode->next = NULL;
     
 	return newNode;
 }
 
+/* Abandon de l'idée d'utiliser un arbre pour les saisons...
 Node* generateWorld() 
 {
 //	srand(time(NULL));
@@ -64,6 +64,58 @@ Node* generateWorld()
 			strcpy(root->left->right->data, "Automne");
 		}
     }
+
+	return root;
+}
+*/
+
+Node* generateWorld() 
+{
+//	srand(time(NULL));
+
+	struct Node* root = createNode("Monde");
+
+	if (rand() % 2 == 0) 
+	{
+		root->left = createNode("Froid");
+		root->right = createNode("Chaud");
+	}
+
+	else
+	{
+		root->left = createNode("Chaud");
+		root->right = createNode("Froid");
+	}
+
+	if (strcmp(root->right->data, "Chaud") == 0) 
+    {
+		if (rand() % 2 == 0) 
+		{
+			strcpy(root->right->left->data, "Printemps");
+			strcpy(root->right->right->data, "Été");
+		}
+
+		else 
+		{
+			strcpy(root->right->left->data, "Été");
+			strcpy(root->right->right->data, "Printemps");
+        }
+    }
+
+	if (strcmp(root->left->data, "Froid") == 0) 
+	{
+		if (rand() % 2 == 0) 
+		{
+			strcpy(root->left->left->data, "Automne");
+			strcpy(root->left->right->data, "Hiver");
+		}
+
+		else 
+		{
+			strcpy(root->left->left->data, "Hiver");
+			strcpy(root->left->right->data, "Automne");
+		}
+	}
 
 	return root;
 }

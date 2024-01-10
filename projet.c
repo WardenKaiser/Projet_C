@@ -16,7 +16,7 @@ Node* createNode(const char* data)
 	return newNode;
 }
 
-/* Abandon de l'idée d'utiliser un arbre pour les saisons...
+/* Abandon de l'idée d'utiliser un arbre pour les saisons... 
 Node* generateWorld() 
 {
 //	srand(time(NULL));

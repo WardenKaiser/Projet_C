@@ -66,7 +66,7 @@ int males = 0;
 			printw("Number of males: %d\n", males);
 			printw("Number of females: %d\n", females);
 			queen_feeding(&Hive);
-			outdoor_hazard(&Hive,&season_node);
+			outdoor_hazard(&Hive,&season_node); // Concernant cette fonction pour une raison qui nous échappe complètement, sur le PC de Guillaume tout fonctionne parfaitement mais quand je décide de lancer sur mon PC j'ai une erreur de segmentation qui s'affiche de façon aléatoire et on ne comprend pas du tout pourquoi on  ace problème là. On espère très sincèrement lors de votre lancement de notre programme que vous ne recontreriez pas le problème que j'ai eu 
 			adding_bees_from_outside_the_hive(&Hive, &season_node,&males,&females);
 			collect_pollen_from_field(&my_bee, my_field, hive_x, hive_y, current_day);
 		   food_recovery( &my_bee,&Hive ,hive_x, hive_y);

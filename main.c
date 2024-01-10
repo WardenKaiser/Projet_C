@@ -53,7 +53,7 @@ int males = 0;
     int hive_y = 0;
 			struct FlowerNode* my_field = NULL;
 			struct FlowerNode* season_node = NULL; // GROS DOUTE SUR CA A VERIFIER
-			create_field(&my_field, &season_node); // GROS DOUTE SUR CA A VERIFIER		
+			create_field(&my_field, season_node); // GROS DOUTE SUR CA A VERIFIER		
 			add_flower(my_field);
 			bee_life_cycle(&bee ,current_day,&Hive);
 			convert_royalJelly( &Hive);

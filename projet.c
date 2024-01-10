@@ -141,7 +141,7 @@ for (size_t i = 0; i < (size_t)current_day; i++)
 	if (current_day >= 19 && current_day <= 45)
 	{
 		bee->Role.forager;
-		hive->total_foragers++;
+		hive->total_foragers++; 
 	}
 
 	if (current_day > 45)
@@ -310,6 +310,7 @@ void collect_pollen_from_field(struct bee* bee, FlowerNode* field, int hive_x, i
 	printw("L'abeille retourne à la ruche avec %d unités de pollen collectées aujourd'hui !\n", total_pollen_collected);
 
 	bee->pollen_collected_per_day[current_day] += total_pollen_collected;
+	bee->pollen_capacity+=total_pollen_collected;
 
 	bee->x = hive_x;
 	bee->y = hive_y;
@@ -482,7 +483,7 @@ void food_recovery(struct bee* bee,struct hive* hive ,int hive_x, int hive_y)
 {
     bee->x = hive_x;
     bee->y = hive_y;
-    hive->food_lvl += bee->pollen_collected;
+    hive->food_lvl += bee->pollen_capacity;
     bee->pollen_collected = 0;
 }
 

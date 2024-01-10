@@ -50,6 +50,10 @@ int males = 0;
 	struct bee my_bee = {0, 0, 0, 0, 1, 0, 'M', {0, 0, 0, 0, 0, 0, 0, 1}, NULL}; // Pour une larve
 	int hive_x = 0;
     int hive_y = 0;
+//     Node* worldTree = generateWorld(); // A SUPP SI PROBLEME DE SEGMENTATION
+//	char currentSeason[99]; // A SUPP SI PROBLEME DE SEGMENTATION
+//	findCurrentSeason(worldTree, currentSeason); // A SUPP SI PROBLEME DE SEGMENTATION
+
 			struct FlowerNode* my_field = NULL;
 			struct FlowerNode* season_node = NULL; // GROS DOUTE SUR CA A VERIFIER
 			create_field(&my_field, &season_node); // GROS DOUTE SUR CA A VERIFIER		
@@ -67,6 +71,7 @@ int males = 0;
 			current_day++;
 			clear();
 			printw("jour : %d\n", current_day);
+//			printf("Saison actuelle : %s\n", currentSeason); // A SUPP SI PROBLEME DE SEGMENTATION
 		 	printw("Food Capacity: %d\n", Hive.food_cap);
 		    printw("Current Food Level: %d\n", Hive.food_lvl);
 			printw("current royal jelly level:%d\n",Hive.royalJelly_lvl);
